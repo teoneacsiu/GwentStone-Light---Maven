@@ -199,7 +199,7 @@ public class Match {
                 case "getPlayerMana":
                     actionNode.put("command", action.getCommand());
                     actionNode.put("playerIdx", action.getPlayerIdx());
-                    if (playerTurn == 1) {
+                    if (action.getPlayerIdx() == 1) {
                         actionNode.put("output", player1.getMana());
                     } else actionNode.put("output", player2.getMana());
                     break;

@@ -156,7 +156,7 @@
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
-  "output" : 11
+  "output" : 7
 }, {
   "command" : "getCardsOnTable",
   "output" : [ [ {
