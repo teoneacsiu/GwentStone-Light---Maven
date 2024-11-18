@@ -1,20 +1,30 @@
 package org.poo.main;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.poo.fileio.CardInput;
 import org.poo.playingcards.*;
 import org.poo.fileio.DecksInput;
 
 import java.util.ArrayList;
 
+@Getter @Setter
 public class Player {
+    @Setter
+    @Getter
     private int mana;
+    @Getter
     private Deck deck;
     private ArrayList<CardInput> inputDeck;
-    private ArrayList<Deck> availableDecks;
+    private final ArrayList<Deck> availableDecks;
+    @Getter
     private Cards hero;
     private Deck originalDeck;
+    @Getter
     private Deck hand;
+    @Getter
     private int wins;
+    @Getter
     private int losses;
 
     public Player(DecksInput decksInput) {
@@ -113,31 +123,4 @@ public class Player {
         losses++;
     }
 
-    public void setMana(int i) {
-        mana = i;
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
-    public Cards getHero() {
-        return hero;
-    }
-
-    public int getWins() {
-        return wins;
-    }
-
-    public int getLosses() {
-        return losses;
-    }
-
-    public Deck getDeck() {
-        return deck;
-    }
-
-    public Deck getHand() {
-        return hand;
-    }
 }

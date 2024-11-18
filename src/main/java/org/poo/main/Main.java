@@ -1,4 +1,4 @@
-package main;
+package org.poo.main;
 
 import org.poo.checker.Checker;
 

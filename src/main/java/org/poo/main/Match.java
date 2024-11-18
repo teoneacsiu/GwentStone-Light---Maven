@@ -17,9 +17,9 @@ public class Match {
     protected static final int PLAYER2_BACK_ROW = 1;
     protected static final int PLAYER1_FRONT_ROW = 2;
     protected static final int PLAYER1_BACK_ROW = 3;
-    private Player player1;
-    private Player player2;
-    private Field field;
+    private final Player player1;
+    private final Player player2;
+    private final Field field;
     private int playerTurn;
     private int turnCounter;
 
@@ -441,13 +441,5 @@ public class Match {
         currPlayer.setMana(currPlayer.getMana() - currHero.getMana());
         currHero.useAbility(field, row);
         return null;
-    }
-
-    public Player getPlayer1() {
-        return player1;
-    }
-
-    public Player getPlayer2() {
-        return player2;
     }
 }

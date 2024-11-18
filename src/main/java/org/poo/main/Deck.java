@@ -12,6 +12,7 @@ import lombok.Getter;
 import org.poo.playingcards.*;
 
 public class Deck {
+    @Getter
     private int numOfCards;
     private final ArrayList<Cards> cards;
 
@@ -80,7 +81,4 @@ public class Deck {
         return output;
     }
 
-    public int getNumOfCards() {
-        return numOfCards;
-    }
 }
