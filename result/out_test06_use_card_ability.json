@@ -19,30 +19,22 @@
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
-  "output" : 2
+  "output" : 3
 }, {
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
-}, {
   "command" : "getCardAtPosition",
   "x" : 0,
   "y" : 0,
-  "output" : "No card available at that position."
-}, {
-  "command" : "cardUsesAbility",
-  "cardAttacker" : {
-    "x" : 0,
-    "y" : 0
-  },
-  "cardAttacked" : {
-    "x" : 1,
-    "y" : 0
-  },
-  "error" : "Card not found."
+  "output" : {
+    "mana" : 3,
+    "attackDamage" : 1,
+    "health" : 7,
+    "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
+    "colors" : [ "Red", "Purple" ],
+    "name" : "Goliath"
+  }
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -83,7 +75,14 @@
   "command" : "getCardAtPosition",
   "x" : 0,
   "y" : 0,
-  "output" : "No card available at that position."
+  "output" : {
+    "mana" : 3,
+    "attackDamage" : 1,
+    "health" : 7,
+    "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
+    "colors" : [ "Red", "Purple" ],
+    "name" : "Goliath"
+  }
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -95,21 +94,6 @@
     "y" : 0
   },
   "error" : "Card not found."
-}, {
-  "command" : "cardUsesAbility",
-  "cardAttacker" : {
-    "x" : 0,
-    "y" : 0
-  },
-  "cardAttacked" : {
-    "x" : 1,
-    "y" : 0
-  },
-  "error" : "Card not found."
-}, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 1
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -120,7 +104,7 @@
     "x" : 1,
     "y" : 0
   },
-  "error" : "Card not found."
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -132,10 +116,6 @@
     "y" : 0
   },
   "error" : "Attacked card does not belong to the enenmy"
-}, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -157,7 +137,7 @@
     "x" : 2,
     "y" : 1
   },
-  "error" : "Card not found."
+  "error" : "Attacked card does not belong to the current player"
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -168,18 +148,7 @@
     "x" : 0,
     "y" : 0
   },
-  "error" : "Card not found."
-}, {
-  "command" : "cardUsesAbility",
-  "cardAttacker" : {
-    "x" : 0,
-    "y" : 0
-  },
-  "cardAttacked" : {
-    "x" : 1,
-    "y" : 0
-  },
-  "error" : "Card not found."
+  "error" : "Attacked card is not of type 'Tank’."
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -190,7 +159,7 @@
     "x" : 1,
     "y" : 0
   },
-  "error" : "Card not found."
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -223,7 +192,7 @@
     "x" : 0,
     "y" : 0
   },
-  "error" : "Card not found."
+  "error" : "Attacked card is not of type 'Tank’."
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -234,32 +203,35 @@
     "x" : 2,
     "y" : 2
   },
-  "error" : "Card not found."
-}, {
-  "command" : "cardUsesAbility",
-  "cardAttacker" : {
-    "x" : 0,
-    "y" : 2
-  },
-  "cardAttacked" : {
-    "x" : 2,
-    "y" : 1
-  },
-  "error" : "Card not found."
+  "error" : "Attacked card does not belong to the current player"
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
-  "output" : 2
+  "output" : 7
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
-  "output" : 2
+  "output" : 7
 }, {
   "command" : "getPlayerTurn",
   "output" : 1
 }, {
   "command" : "getCardsOnTable",
   "output" : [ [ {
+    "mana" : 3,
+    "attackDamage" : 1,
+    "health" : 7,
+    "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
+    "colors" : [ "Red", "Purple" ],
+    "name" : "Goliath"
+  }, {
+    "mana" : 5,
+    "attackDamage" : 4,
+    "health" : 3,
+    "description" : "Standard card: When he is near, close your eyes. They betray your mind.",
+    "colors" : [ "Red", "Black" ],
+    "name" : "Miraj"
+  }, {
     "mana" : 3,
     "attackDamage" : 1,
     "health" : 7,
@@ -294,6 +266,13 @@
     "description" : "Standard card: Death incarnate. No better time to die than now.",
     "colors" : [ "Orange", "Red", "Black" ],
     "name" : "The Ripper"
+  }, {
+    "mana" : 5,
+    "attackDamage" : 4,
+    "health" : 4,
+    "description" : "Standard card: When he is near, close your eyes. They betray your mind.",
+    "colors" : [ "Red", "Black" ],
+    "name" : "Miraj"
   }, {
     "mana" : 5,
     "attackDamage" : 5,

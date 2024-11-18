@@ -51,10 +51,10 @@ public class Match {
 
     public void startRound() {
         player1.setMana(
-                player1.getMana() + min(turnCounter % 2 + 1, 10)
+                player1.getMana() + min(turnCounter / 2 + 1, 10)
         );
         player2.setMana(
-                player2.getMana() + min(turnCounter % 2 + 1, 10)
+                player2.getMana() + min(turnCounter / 2 + 1, 10)
         );
         player1.drawCard();
         player2.drawCard();

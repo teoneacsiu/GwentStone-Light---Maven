@@ -44,10 +44,6 @@
 }, {
   "command" : "placeCard",
   "error" : "Not enough mana to place card on table.",
-  "handIdx" : 1
-}, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
   "handIdx" : 2
 }, {
   "command" : "getCardsInHand",
@@ -98,15 +94,7 @@
 }, {
   "command" : "placeCard",
   "error" : "Not enough mana to place card on table.",
-  "handIdx" : 1
-}, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
   "handIdx" : 0
-}, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 1
 }, {
   "command" : "placeCard",
   "error" : "Not enough mana to place card on table.",
@@ -114,11 +102,11 @@
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
-  "output" : 4
+  "output" : 11
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
-  "output" : 4
+  "output" : 11
 }, {
   "command" : "getPlayerTurn",
   "output" : 2
@@ -134,8 +122,22 @@
   }, {
     "mana" : 4,
     "attackDamage" : 1,
+    "health" : 7,
+    "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
+    "colors" : [ "Red", "Purple" ],
+    "name" : "Goliath"
+  }, {
+    "mana" : 4,
+    "attackDamage" : 1,
     "health" : 8,
     "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
+    "colors" : [ "Brown", "Black", "Grey" ],
+    "name" : "Goliath"
+  }, {
+    "mana" : 4,
+    "attackDamage" : 1,
+    "health" : 7,
+    "description" : "Premium card: No matter how many, his body will fight. Save your breath for the Mountain is strong.",
     "colors" : [ "Brown", "Black", "Grey" ],
     "name" : "Goliath"
   }, {
@@ -159,6 +161,13 @@
     "description" : "Standard card: When he is near, close your eyes. They betray your mind.",
     "colors" : [ "Red", "Black" ],
     "name" : "Miraj"
+  }, {
+    "mana" : 4,
+    "attackDamage" : 2,
+    "health" : 7,
+    "description" : "Premium card: No matter how many, his body will fight. Save your breath for the Mountain is strong.",
+    "colors" : [ "Red", "Purple" ],
+    "name" : "Goliath"
   }, {
     "mana" : 4,
     "attackDamage" : 5,

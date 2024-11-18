@@ -8,8 +8,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Coords {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Coords(int x, int y) {
         this.x = x;

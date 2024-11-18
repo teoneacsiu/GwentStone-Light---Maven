@@ -43,10 +43,6 @@
   },
   "error" : "Card not found."
 }, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
-}, {
   "command" : "getCardAtPosition",
   "x" : 2,
   "y" : 0,
@@ -142,11 +138,11 @@
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
-  "output" : 0
+  "output" : 3
 }, {
   "command" : "useHeroAbility",
   "affectedRow" : 0,
-  "error" : "Not enough mana to use hero's ability."
+  "error" : "Selected row does not belong to the current player."
 }, {
   "command" : "getCardAtPosition",
   "x" : 0,
@@ -165,17 +161,9 @@
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
-  "output" : 1
+  "output" : 7
 }, {
   "error" : "Card not found"
-}, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 1
-}, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
@@ -228,6 +216,34 @@
     "description" : "Premium card: Ravished by the winds of hell, no soul is to be forgiven.",
     "colors" : [ "Orange", "Red", "Black" ],
     "name" : "The Ripper"
+  }, {
+    "mana" : 3,
+    "attackDamage" : 2,
+    "health" : 1,
+    "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
+    "colors" : [ "Brown", "Blue" ],
+    "name" : "Warden"
+  }, {
+    "mana" : 4,
+    "attackDamage" : 5,
+    "health" : 4,
+    "description" : "Premium card: Insanity is always an option, now it is an absolute.",
+    "colors" : [ "Red", "Black" ],
+    "name" : "Miraj"
+  }, {
+    "mana" : 4,
+    "attackDamage" : 6,
+    "health" : 4,
+    "description" : "Premium card: Ravished by the winds of hell, no soul is to be forgiven.",
+    "colors" : [ "Orange", "Red", "Black" ],
+    "name" : "The Ripper"
+  }, {
+    "mana" : 4,
+    "attackDamage" : 2,
+    "health" : 7,
+    "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
+    "colors" : [ "Brown", "Black", "Grey" ],
+    "name" : "Goliath"
   } ], [ {
     "mana" : 2,
     "attackDamage" : 0,

@@ -26,10 +26,6 @@
   },
   "error" : "Attacked card is not of type 'Tank’."
 }, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 1
-}, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
     "x" : 1,
@@ -61,15 +57,11 @@
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
-  "output" : 2
+  "output" : 5
 }, {
   "command" : "getPlayerTurn",
   "output" : 1
 }, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 1
-}, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
     "x" : 2,
@@ -83,21 +75,6 @@
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
-    "x" : 3,
-    "y" : 0
-  },
-  "cardAttacked" : {
-    "x" : 2,
-    "y" : 0
-  },
-  "error" : "Attacked card is not of type 'Tank’."
-}, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
-}, {
-  "command" : "cardUsesAbility",
-  "cardAttacker" : {
     "x" : 1,
     "y" : 0
   },
@@ -105,7 +82,7 @@
     "x" : 2,
     "y" : 1
   },
-  "error" : "Card not found."
+  "error" : "Attacked card does not belong to the current player"
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -140,21 +117,13 @@
   },
   "error" : "Attacked card does not belong to the enenmy"
 }, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 1
-}, {
-  "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
-}, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
-  "output" : 4
+  "output" : 11
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
-  "output" : 4
+  "output" : 11
 }, {
   "command" : "getCardsOnTable",
   "output" : [ [ {
@@ -164,6 +133,20 @@
     "description" : "Standard card: When he is near, close your eyes. They betray your mind.",
     "colors" : [ "Yellow", "Orange", "Red" ],
     "name" : "Miraj"
+  }, {
+    "mana" : 4,
+    "attackDamage" : 2,
+    "health" : 8,
+    "description" : "Premium card: No matter how many, his body will fight. Save your breath for the Mountain is strong.",
+    "colors" : [ "Red", "Purple" ],
+    "name" : "Goliath"
+  }, {
+    "mana" : 4,
+    "attackDamage" : 5,
+    "health" : 3,
+    "description" : "Standard card: Death incarnate. No better time to die than now.",
+    "colors" : [ "Orange", "Red", "Black" ],
+    "name" : "The Ripper"
   } ], [ {
     "mana" : 2,
     "attackDamage" : 0,
@@ -186,12 +169,33 @@
     "colors" : [ "Black", "White", "Green" ],
     "name" : "Warden"
   }, {
+    "mana" : 5,
+    "attackDamage" : 5,
+    "health" : 3,
+    "description" : "Standard card: When he is near, close your eyes. They betray your mind.",
+    "colors" : [ "Red", "Black" ],
+    "name" : "Miraj"
+  }, {
     "mana" : 4,
     "attackDamage" : 1,
     "health" : 8,
     "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
     "colors" : [ "Red", "Purple" ],
     "name" : "Goliath"
+  }, {
+    "mana" : 3,
+    "attackDamage" : 1,
+    "health" : 8,
+    "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
+    "colors" : [ "Brown", "Black", "Grey" ],
+    "name" : "Goliath"
+  }, {
+    "mana" : 4,
+    "attackDamage" : 6,
+    "health" : 4,
+    "description" : "Premium card: Ravished by the winds of hell, no soul is to be forgiven.",
+    "colors" : [ "Black", "Yellow" ],
+    "name" : "The Ripper"
   } ], [ {
     "mana" : 3,
     "attackDamage" : 0,

@@ -1,8 +1,4 @@
 [ {
-  "command" : "useHeroAbility",
-  "affectedRow" : 1,
-  "error" : "Not enough mana to use hero's ability."
-}, {
   "command" : "getCardAtPosition",
   "x" : 2,
   "y" : 0,
@@ -35,11 +31,11 @@
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
-  "output" : 2
+  "output" : 4
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
-  "output" : 2
+  "output" : 4
 }, {
   "command" : "getCardsOnTable",
   "output" : [ [ {
@@ -51,14 +47,14 @@
     "name" : "The Ripper"
   } ], [ {
     "mana" : 1,
-    "attackDamage" : 6,
+    "attackDamage" : 7,
     "health" : 3,
     "description" : "Standard card: Trained by the best, nothing will catch him off-guard.",
     "colors" : [ "Black", "Grey", "Blue" ],
     "name" : "Sentinel"
   }, {
     "mana" : 1,
-    "attackDamage" : 0,
+    "attackDamage" : 1,
     "health" : 3,
     "description" : "Standard card: Thrown from the highest cliff, revenge will be his glory.",
     "colors" : [ "Black", "White", "Red" ],

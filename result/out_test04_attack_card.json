@@ -30,7 +30,7 @@
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
-  "output" : 2
+  "output" : 3
 }, {
   "command" : "getPlayerTurn",
   "output" : 1
@@ -48,11 +48,11 @@
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
-  "output" : 2
+  "output" : 3
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
-  "output" : 2
+  "output" : 3
 }, {
   "command" : "getPlayerTurn",
   "output" : 2
