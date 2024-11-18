@@ -54,7 +54,6 @@ public class Deck {
     }
 
     public Cards dealCard(int index) {
-        //System.out.println(index + " + " + cards.size());
         if (index >= cards.size())
             return null;
 

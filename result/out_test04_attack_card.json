@@ -1,4 +1,10 @@
 [ {
+  "Player1Mana" : 1,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 2
+}, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
     "x" : 2,
@@ -9,6 +15,9 @@
     "y" : 0
   },
   "error" : "Card not found."
+}, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 0
 }, {
   "command" : "getCardsInHand",
   "playerIdx" : 1,
@@ -34,6 +43,9 @@
 }, {
   "command" : "getPlayerTurn",
   "output" : 1
+}, {
+  "Player1Mana" : 1,
+  "Player2Mana" : 3
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {

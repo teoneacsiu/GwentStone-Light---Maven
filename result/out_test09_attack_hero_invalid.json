@@ -1,9 +1,27 @@
 [ {
+  "Player1Mana" : 1,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 2,
+  "Player2Mana" : 1
+}, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 1
+}, {
   "error" : "Card not found"
+}, {
+  "Player1Mana" : 3,
+  "Player2Mana" : 3
 }, {
   "error" : "Card not found"
 }, {
   "error" : "Card not found"
+}, {
+  "Player1Mana" : 1,
+  "Player2Mana" : 3
 }, {
   "command" : "getCardAtPosition",
   "x" : 3,
@@ -55,6 +73,9 @@
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
+  "Player1Mana" : 5,
+  "Player2Mana" : 6
+}, {
   "command" : "getCardAtPosition",
   "x" : 1,
   "y" : 0,
@@ -86,6 +107,15 @@
     "name" : "General Kocioraw",
     "health" : 30
   }
+}, {
+  "Player1Mana" : 3,
+  "Player2Mana" : 6
+}, {
+  "Player1Mana" : 8,
+  "Player2Mana" : 10
+}, {
+  "Player1Mana" : 6,
+  "Player2Mana" : 10
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,

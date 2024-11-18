@@ -82,6 +82,8 @@ public class Match {
                 case "placeCard":
                     res = placeCard(action);
                     if (res == null) {
+                        actionNode.put("Player1Mana", player1.getMana());
+                        actionNode.put("Player2Mana", player2.getMana());
                         break;
                     }
                     actionNode.put("command", action.getCommand());
@@ -243,7 +245,6 @@ public class Match {
                 "Not enough mana to place card on table.";
         String rowFull =
                 "Cannot place card on table since row is full.";
-        System.out.println(playerTurn);
 
         if (playerTurn == 1) {
             card = player1.getCard(action.getHandIdx());
@@ -255,6 +256,8 @@ public class Match {
         if (card == null) {
             return notEnoughMana;
         }
+        System.out.println("PlacedCard Required Mana -> " + card.getMana() +
+                " for player:" + playerTurn);
 
         int row = card.getCardRow();
         switch (row) {

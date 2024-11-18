@@ -1,4 +1,16 @@
 [ {
+  "Player1Mana" : 1,
+  "Player2Mana" : 3
+}, {
+  "Player1Mana" : 1,
+  "Player2Mana" : 2
+}, {
+  "Player1Mana" : 2,
+  "Player2Mana" : 4
+}, {
+  "Player1Mana" : 1,
+  "Player2Mana" : 2
+}, {
   "command" : "getCardAtPosition",
   "x" : 1,
   "y" : 0,

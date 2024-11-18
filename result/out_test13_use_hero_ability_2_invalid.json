@@ -1,4 +1,16 @@
 [ {
+  "Player1Mana" : 3,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 1,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 4,
+  "Player2Mana" : 1
+}, {
+  "Player1Mana" : 3,
+  "Player2Mana" : 1
+}, {
   "command" : "getCardAtPosition",
   "x" : 3,
   "y" : 0,
@@ -26,6 +38,12 @@
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
+  "Player1Mana" : 7,
+  "Player2Mana" : 2
+}, {
+  "Player1Mana" : 7,
+  "Player2Mana" : 0
+}, {
   "command" : "getCardAtPosition",
   "x" : 1,
   "y" : 0,
@@ -50,9 +68,33 @@
     "name" : "Disciple"
   }
 }, {
+  "Player1Mana" : 4,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 9,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 5,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 11,
+  "Player2Mana" : 2
+}, {
   "command" : "useHeroAbility",
   "affectedRow" : 2,
   "error" : "Selected row does not belong to the current player."
+}, {
+  "Player1Mana" : 8,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 4,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 11,
+  "Player2Mana" : 3
+}, {
+  "Player1Mana" : 9,
+  "Player2Mana" : 1
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,

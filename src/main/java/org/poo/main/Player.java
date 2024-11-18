@@ -86,13 +86,11 @@ public class Player {
 
     public void chooseDeck(int deckIdx) {
         originalDeck = availableDecks.get(deckIdx);
-        //System.out.println(originalDeck.printDeck());
     }
 
     public void drawCard() {
         if (hand != null) {
             hand.addCard((deck.dealCard(0)));
-            //System.out.println(hand.printDeck());
         }
     }
 
@@ -106,7 +104,6 @@ public class Player {
 
 
         if (card != null) {
-            //System.out.println("DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             if (mana >= card.getMana()) {
                 mana -= card.getMana();
                 return card;

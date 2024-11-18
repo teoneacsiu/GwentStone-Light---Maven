@@ -12,6 +12,9 @@
   "playerIdx" : 2,
   "output" : 1
 }, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 3
+}, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
 }, {
@@ -23,6 +26,9 @@
 }, {
   "command" : "getPlayerTurn",
   "output" : 1
+}, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 1
 }, {
   "command" : "getCardAtPosition",
   "x" : 0,
@@ -42,6 +48,9 @@
     "y" : 0
   },
   "error" : "Card not found."
+}, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 4
 }, {
   "command" : "getCardAtPosition",
   "x" : 2,
@@ -63,6 +72,9 @@
   "affectedRow" : 0,
   "error" : "Not enough mana to use hero's ability."
 }, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 3
+}, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
     "x" : 0,
@@ -73,6 +85,9 @@
     "y" : 1
   },
   "error" : "Card not found."
+}, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 7
 }, {
   "command" : "getCardAtPosition",
   "x" : 2,
@@ -95,6 +110,9 @@
   "command" : "getPlayerMana",
   "playerIdx" : 1,
   "output" : 0
+}, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 5
 }, {
   "command" : "getCardAtPosition",
   "x" : 0,
@@ -118,6 +136,9 @@
   "error" : "Card not found"
 }, {
   "error" : "Card not found"
+}, {
+  "Player1Mana" : 3,
+  "Player2Mana" : 10
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
@@ -144,6 +165,9 @@
   "affectedRow" : 0,
   "error" : "Selected row does not belong to the current player."
 }, {
+  "Player1Mana" : 3,
+  "Player2Mana" : 7
+}, {
   "command" : "getCardAtPosition",
   "x" : 0,
   "y" : 0,
@@ -164,6 +188,12 @@
   "output" : 7
 }, {
   "error" : "Card not found"
+}, {
+  "Player1Mana" : 5,
+  "Player2Mana" : 13
+}, {
+  "Player1Mana" : 1,
+  "Player2Mana" : 13
 }, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {

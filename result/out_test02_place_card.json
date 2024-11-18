@@ -1,6 +1,12 @@
 [ {
+  "Player1Mana" : 3,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 0
+}, {
   "command" : "getCardsInHand",
-  "playerIdx" : 2,
+    "playerIdx" : 2,
   "output" : [ {
     "mana" : 3,
     "attackDamage" : 0,
@@ -38,6 +44,21 @@
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
+  "Player1Mana" : 3,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 2,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 0,
+  "Player2Mana" : 0
+}, {
+  "Player1Mana" : 4,
+  "Player2Mana" : 2
+}, {
+  "Player1Mana" : 2,
+  "Player2Mana" : 2
+}, {
   "command" : "getCardsInHand",
   "playerIdx" : 2,
   "output" : [ {
@@ -69,6 +90,15 @@
 }, {
   "command" : "getPlayerTurn",
   "output" : 2
+}, {
+  "Player1Mana" : 7,
+  "Player2Mana" : 3
+}, {
+  "Player1Mana" : 7,
+  "Player2Mana" : 1
+}, {
+  "Player1Mana" : 5,
+  "Player2Mana" : 1
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
