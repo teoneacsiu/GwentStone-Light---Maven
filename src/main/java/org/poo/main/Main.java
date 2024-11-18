@@ -1,10 +1,12 @@
-package org.poo.main;
+package main;
 
+import org.poo.checker.Checker;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import org.poo.checker.Checker;
 import org.poo.checker.CheckerConstants;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.poo.fileio.Input;
 
 import java.io.File;
@@ -63,31 +65,21 @@ public final class Main {
     public static void action(final String filePath1,
                               final String filePath2) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
+
         Input inputData = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH + filePath1),
                 Input.class);
 
-        ArrayNode output = objectMapper.createArrayNode();
+       ArrayNode output = objectMapper.createArrayNode();
 
-        /*
-         * TODO Implement your function here
-         *
-         * How to add output to the output array?
-         * There are multiple ways to do this, here is one example:
-         *
-         * ObjectMapper mapper = new ObjectMapper();
-         *
-         * ObjectNode objectNode = mapper.createObjectNode();
-         * objectNode.put("field_name", "field_value");
-         *
-         * ArrayNode arrayNode = mapper.createArrayNode();
-         * arrayNode.add(objectNode);
-         *
-         * output.add(arrayNode);
-         * output.add(objectNode);
-         *
-         */
+        Match match = new Match(inputData);
 
-        ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
-        objectWriter.writeValue(new File(filePath2), output);
+        for (int i = 0; i < inputData.getGames().size(); i++) {
+            match.resetMatch();
+            match.startGame(inputData.getGames().get(i).getStartGame());
+            output.addAll(match.playing(inputData.getGames().get(i).getActions()));
+            ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
+            objectWriter.writeValue(new File(filePath2), output);
+        }
+        System.out.println("\n");
     }
 }
