@@ -19,30 +19,30 @@ public class Field {
 
     public Field() {
 
-        for(int i = 0; i < TABLE_ROWS; i++) {
-            for(int j = 0; j < TABLE_COLS; j++) {
+        for (int i = 0; i < TABLE_ROWS; i++) {
+            for (int j = 0; j < TABLE_COLS; j++) {
                 field[i][j] = null;
             }
         }
     }
 
-    public void addCard(Cards card, int row) {
-        for(int i = 0; i < TABLE_COLS; i++) {
-            if(field[row][i] == null) {
+    public void addCard(final Cards card, final int row) {
+        for (int i = 0; i < TABLE_COLS; i++) {
+            if (field[row][i] == null) {
                 field[row][i] = card;
                 break;
             }
         }
     }
 
-    public Cards getCard(int row, int col) {
+    public Cards getCard(final int row, final int col) {
         return field[row][col];
     }
 
-    public boolean existsTank(int row) {
+    public boolean existsTank(final int row) {
         boolean exists = false;
-        for(int i = 0; i < TABLE_COLS; i++) {
-            if(field[row][i] != null) {
+        for (int i = 0; i < TABLE_COLS; i++) {
+            if (field[row][i] != null) {
                 if (tanks.contains(getCard(row, i).getName())) {
                     exists = true;
                 }
@@ -51,28 +51,30 @@ public class Field {
         return exists;
     }
 
-    public boolean attackedCardIsTank(int row, int col) {
+    public boolean attackedCardIsTank(final int row, final int col) {
         return tanks.contains(getCard(row, col).getName());
     }
 
-    public void removeCard(int defenseX, int defenseY) {
+    public void removeCard(final int defenseX, final int defenseY) {
         field[defenseX][defenseY] = null;
     }
 
-    public void unfreeze(int backRow, int frontRow) {
-        for(int i = 0; i < TABLE_COLS; i++) {
-            if(field[backRow][i] != null)
+    public void unfreeze(final int backRow, final int frontRow) {
+        for (int i = 0; i < TABLE_COLS; i++) {
+            if (field[backRow][i] != null) {
                 field[backRow][i].setFrozen(false);
+            }
 
-            if (field[frontRow][i] != null)
+            if (field[frontRow][i] != null) {
                 field[frontRow][i].setFrozen(false);
+            }
         }
     }
 
     public void resetAttack() {
-        for(int i = 0; i < TABLE_ROWS; i++) {
-            for(int j = 0; j < TABLE_COLS; j++) {
-                if(field[i][j] != null) {
+        for (int i = 0; i < TABLE_ROWS; i++) {
+            for (int j = 0; j < TABLE_COLS; j++) {
+                if (field[i][j] != null) {
                     field[i][j].setUsed(false);
                 }
             }

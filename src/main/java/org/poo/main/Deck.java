@@ -11,6 +11,7 @@ import org.poo.fileio.CardInput;
 import lombok.Getter;
 import org.poo.playingcards.*;
 
+
 public class Deck {
     @Getter
     private int numOfCards;
@@ -54,8 +55,9 @@ public class Deck {
     }
 
     public Cards dealCard(int index) {
-        if (index >= cards.size())
+        if (index >= cards.size()) {
             return null;
+        }
 
         numOfCards--;
         return cards.remove(index);

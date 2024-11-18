@@ -17,13 +17,14 @@ public class Match {
     protected static final int PLAYER2_BACK_ROW = 1;
     protected static final int PLAYER1_FRONT_ROW = 2;
     protected static final int PLAYER1_BACK_ROW = 3;
+    protected static final int MAX_MANA = 10;
     private final Player player1;
     private final Player player2;
     private final Field field;
     private int playerTurn;
     private int turnCounter;
 
-    public Match(Input input) {
+    public Match(final Input input) {
         field = new Field();
         player1 = new Player(input.getPlayerOneDecks());
         player2 = new Player(input.getPlayerTwoDecks());
@@ -51,10 +52,10 @@ public class Match {
 
     public void startRound() {
         player1.setMana(
-                player1.getMana() + min(turnCounter / 2 + 1, 10)
+                player1.getMana() + min(turnCounter / 2 + 1, MAX_MANA)
         );
         player2.setMana(
-                player2.getMana() + min(turnCounter / 2 + 1, 10)
+                player2.getMana() + min(turnCounter / 2 + 1, MAX_MANA)
         );
         player1.drawCard();
         player2.drawCard();
@@ -70,14 +71,13 @@ public class Match {
         turnCounter = 1;
     }
 
-    public ArrayNode playing(ArrayList<ActionsInput> input) {
+    public ArrayNode playing(final ArrayList<ActionsInput> input) {
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode output = mapper.createArrayNode();
 
         for (ActionsInput action : input) {
             ObjectNode actionNode = mapper.createObjectNode();
             String res;
-
             switch (action.getCommand()) {
                 case "placeCard":
                     res = placeCard(action);
@@ -129,8 +129,8 @@ public class Match {
                     if (res == null) {
                         break;
                     }
-                    if (res.equals("Player one killed the enemy hero.") ||
-                            res.equals("Player two killed the enemy hero.")) {
+                    if (res.equals("Player one killed the enemy hero.")
+                           || res.equals("Player two killed the enemy hero.")) {
                         System.out.println("Enemy hero killed");
                         actionNode.put("gameEnded", res);
                     }
@@ -155,10 +155,10 @@ public class Match {
                         field.unfreeze(PLAYER2_BACK_ROW, PLAYER2_FRONT_ROW);
                         playerTurn = 1;
                     }
-
                     turnCounter++;
-                    if (turnCounter % 2 == 1)
+                    if (turnCounter % 2 == 1) {
                         startRound();
+                    }
                     break;
                 case "getPlayerOneWins":
                     actionNode.put("command", action.getCommand());
@@ -177,31 +177,36 @@ public class Match {
                     actionNode.put("playerIdx", action.getPlayerIdx());
                     if (action.getPlayerIdx() == 1) {
                         actionNode.set("output", player1.getDeck().printDeck());
-                    } else
+                    } else {
                         actionNode.set("output", player2.getDeck().printDeck());
+                    }
                     break;
                 case "getPlayerHero":
                     actionNode.put("command", action.getCommand());
                     actionNode.put("playerIdx", action.getPlayerIdx());
                     if (action.getPlayerIdx() == 1) {
                         actionNode.set("output", player1.getHero().printHero());
-                    } else
+                    } else {
                         actionNode.set("output", player2.getHero().printHero());
+                    }
                     break;
                 case "getCardsInHand":
                     actionNode.put("command", action.getCommand());
                     actionNode.put("playerIdx", action.getPlayerIdx());
                     if (action.getPlayerIdx() == 1) {
                         actionNode.set("output", player1.getHand().printDeck());
-                    } else
+                    } else {
                         actionNode.set("output", player2.getHand().printDeck());
+                    }
                     break;
                 case "getPlayerMana":
                     actionNode.put("command", action.getCommand());
                     actionNode.put("playerIdx", action.getPlayerIdx());
                     if (action.getPlayerIdx() == 1) {
                         actionNode.put("output", player1.getMana());
-                    } else actionNode.put("output", player2.getMana());
+                    } else {
+                        actionNode.put("output", player2.getMana());
+                    }
                     break;
                 case "getPlayerTurn":
                     actionNode.put("command", action.getCommand());
@@ -239,7 +244,7 @@ public class Match {
         return output;
     }
 
-    public String placeCard(ActionsInput action) {
+    public String placeCard(final ActionsInput action) {
         Cards card = new Cards();
         String notEnoughMana =
                 "Not enough mana to place card on table.";
@@ -248,30 +253,31 @@ public class Match {
 
         if (playerTurn == 1) {
             card = player1.getCard(action.getHandIdx());
-        }
-        else if (playerTurn == 2) {
+        } else if (playerTurn == 2) {
             card = player2.getCard(action.getHandIdx());
         }
 
         if (card == null) {
             return notEnoughMana;
         }
-        System.out.println("PlacedCard Required Mana -> " + card.getMana() +
-                " for player:" + playerTurn);
+        System.out.println("PlacedCard Required Mana -> " + card.getMana()
+                + " for player:" + playerTurn);
 
         int row = card.getCardRow();
         switch (row) {
             case 1:
-                if (playerTurn == 1)
+                if (playerTurn == 1) {
                     field.addCard(card, PLAYER1_FRONT_ROW);
-                else
+                } else {
                     field.addCard(card, PLAYER2_FRONT_ROW);
+                }
                 break;
             case 2:
-                if (playerTurn == 1)
+                if (playerTurn == 1) {
                     field.addCard(card, PLAYER1_BACK_ROW);
-                else
+                } else {
                     field.addCard(card, PLAYER2_BACK_ROW);
+                }
                 break;
             default:
                 return rowFull;
@@ -279,37 +285,43 @@ public class Match {
         return null;
     }
 
-    public String attackCard (Coords attackerCoords, Coords defenderCoords) {
+    public String attackCard(Coords attackerCoords, Coords defenderCoords) {
         Cards attacker = field.getCard(attackerCoords.getX(), attackerCoords.getY());
         Cards defender = field.getCard(defenderCoords.getX(), defenderCoords.getY());
 
-        if (attacker == null || defender == null)
+        if (attacker == null || defender == null) {
             return "Card not found.";
+        }
 
-        if (attacker.isUsed())
+        if (attacker.isUsed()) {
             return "Attacker card has already attacked this turn.";
-        if (attacker.isFrozen())
+        }
+        if (attacker.isFrozen()) {
             return "Attacker card is frozen.";
+        }
 
         if (playerTurn == 1) {
-            if (defenderCoords.getX() != PLAYER2_FRONT_ROW &&
-                    defenderCoords.getX() != PLAYER2_BACK_ROW)
+            if (defenderCoords.getX() != PLAYER2_FRONT_ROW
+                   && defenderCoords.getX() != PLAYER2_BACK_ROW) {
                 return "Attacked card does not belong to the enemy.";
+            }
 
-            if (!field.existsTank(PLAYER2_FRONT_ROW) &&
-                    field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY()))
+            if (!field.existsTank(PLAYER2_FRONT_ROW)
+                    && field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
                 return "Attacked card is not of type 'Tank’.";
-        }
-        else if (defenderCoords.getX() != PLAYER1_BACK_ROW &&
-                defenderCoords.getX() != PLAYER1_FRONT_ROW)
+            }
+        } else if (defenderCoords.getX() != PLAYER1_BACK_ROW &&
+                defenderCoords.getX() != PLAYER1_FRONT_ROW) {
             return "Attacked card does not belong to the enemy.";
-        else if (!field.existsTank(PLAYER1_FRONT_ROW) &&
-                field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY()))
+        } else if (!field.existsTank(PLAYER1_FRONT_ROW)
+                && field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
             return "Attacked card is not of type 'Tank’.";
+        }
 
         attacker.attack(defender);
-        if (defender.isDead())
+        if (defender.isDead()) {
             field.removeCard(defenderCoords.getX(), defenderCoords.getY());
+        }
 
         return null;
     }
@@ -318,20 +330,24 @@ public class Match {
         Cards attacker = field.getCard(attackerCoords.getX(), attackerCoords.getY());
         Cards defender = field.getCard(defenderCoords.getX(), defenderCoords.getY());
 
-        if (attacker == null || defender == null)
+        if (attacker == null || defender == null) {
             return "Card not found.";
+        }
 
-        if (attacker.isFrozen())
+        if (attacker.isFrozen()) {
             return "Attacker card is frozen.";
+        }
 
-        if (attacker.isUsed())
+        if (attacker.isUsed()) {
             return "Attacker card has already attacked this turn.";
+        }
 
         if (attacker.getName().equals("Disciple")) {
             if (playerTurn == 1) {
                 if (defenderCoords.getX() == PLAYER2_BACK_ROW ||
-                        defenderCoords.getX() == PLAYER2_FRONT_ROW)
+                        defenderCoords.getX() == PLAYER2_FRONT_ROW) {
                     return "Attacked card does not belong to the current player";
+                }
             } else if (playerTurn == 2)
                 if (defenderCoords.getX() == PLAYER1_BACK_ROW ||
                         defenderCoords.getX() == PLAYER1_FRONT_ROW)
