@@ -4,7 +4,7 @@ import org.poo.main.Field;
 
 import java.util.ArrayList;
 
-public class LordRoyce extends Cards {
+public final class LordRoyce extends Cards {
     public LordRoyce() {
         super();
     }

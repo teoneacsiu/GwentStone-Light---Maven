@@ -3,13 +3,18 @@ package org.poo.main;
 import lombok.Getter;
 import lombok.Setter;
 import org.poo.fileio.CardInput;
-import org.poo.playingcards.*;
+import org.poo.playingcards.Cards;
+
 import org.poo.fileio.DecksInput;
+import org.poo.playingcards.EmpressThorina;
+import org.poo.playingcards.GeneralKocioraw;
+import org.poo.playingcards.KingMudface;
+import org.poo.playingcards.LordRoyce;
 
 import java.util.ArrayList;
 
 @Getter @Setter
-public class Player {
+public final class Player {
     @Setter
     @Getter
     private int mana;
@@ -92,6 +97,10 @@ public class Player {
         if (hand != null) {
             hand.addCard((deck.dealCard(0)));
         }
+    }
+
+    public boolean cardExists(final int index) {
+        return hand.cardExists(index);
     }
 
     public Cards getCard(final int index) {

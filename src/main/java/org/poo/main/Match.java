@@ -12,12 +12,12 @@ import java.util.ArrayList;
 
 import static java.lang.Math.min;
 
-public class Match {
-    protected static final int PLAYER2_FRONT_ROW = 1;
-    protected static final int PLAYER2_BACK_ROW = 0;
-    protected static final int PLAYER1_FRONT_ROW = 2;
-    protected static final int PLAYER1_BACK_ROW = 3;
-    protected static final int MAX_MANA = 10;
+public final class Match {
+    private static final int PLAYER2_FRONT_ROW = 1;
+    private static final int PLAYER2_BACK_ROW = 0;
+    private static final int PLAYER1_FRONT_ROW = 2;
+    private static final int PLAYER1_BACK_ROW = 3;
+    private static final int MAX_MANA = 10;
     private final Player player1;
     private final Player player2;
     private final Field field;
@@ -82,8 +82,8 @@ public class Match {
                 case "placeCard":
                     res = placeCard(action);
                     if (res == null) {
-                        actionNode.put("Player1Mana", player1.getMana());
-                        actionNode.put("Player2Mana", player2.getMana());
+                        //actionNode.put("Player1Mana", player1.getMana());
+                        //actionNode.put("Player2Mana", player2.getMana());
                         break;
                     }
                     actionNode.put("command", action.getCommand());
@@ -252,9 +252,17 @@ public class Match {
                 "Cannot place card on table since row is full.";
 
         if (playerTurn == 1) {
-            card = player1.getCard(action.getHandIdx());
+            if (player1.cardExists(action.getHandIdx())) {
+                card = player1.getCard(action.getHandIdx());
+            } else {
+                return null;
+            }
         } else if (playerTurn == 2) {
-            card = player2.getCard(action.getHandIdx());
+            if (player2.cardExists(action.getHandIdx())) {
+                card = player2.getCard(action.getHandIdx());
+            } else {
+                return null;
+            }
         }
 
         if (card == null) {

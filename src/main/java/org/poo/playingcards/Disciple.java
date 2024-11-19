@@ -2,7 +2,7 @@ package org.poo.playingcards;
 
 import java.util.ArrayList;
 
-public class Disciple extends Cards {
+public final class Disciple extends Cards {
     public Disciple() {
         super();
     }

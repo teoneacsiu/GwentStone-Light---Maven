@@ -4,7 +4,7 @@ import org.poo.main.Field;
 
 import java.util.ArrayList;
 
-public class GeneralKocioraw extends Cards {
+public final class GeneralKocioraw extends Cards {
     public GeneralKocioraw() {
         super();
     }

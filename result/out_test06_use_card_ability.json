@@ -1,10 +1,4 @@
 [ {
-  "Player1Mana" : 3,
-  "Player2Mana" : 0
-}, {
-  "Player1Mana" : 2,
-  "Player2Mana" : 0
-}, {
   "command" : "getCardsInHand",
   "playerIdx" : 2,
   "output" : [ {
@@ -30,9 +24,6 @@
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
-  "Player1Mana" : 5,
-  "Player2Mana" : 0
-}, {
   "command" : "getCardAtPosition",
   "x" : 0,
   "y" : 0,
@@ -55,9 +46,6 @@
     "y" : 0
   },
   "error" : "Attacked card is not of type 'Tank’."
-}, {
-  "Player1Mana" : 2,
-  "Player2Mana" : 0
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -95,9 +83,6 @@
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
-  "Player1Mana" : 6,
-  "Player2Mana" : 2
-}, {
   "command" : "getCardAtPosition",
   "x" : 0,
   "y" : 0,
@@ -121,9 +106,6 @@
   },
   "error" : "Attacked card is not of type 'Tank’."
 }, {
-  "Player1Mana" : 1,
-  "Player2Mana" : 2
-}, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
     "x" : 2,
@@ -145,12 +127,6 @@
     "y" : 0
   },
   "error" : "Attacked card does not belong to the enenmy"
-}, {
-  "Player1Mana" : 6,
-  "Player2Mana" : 2
-}, {
-  "Player1Mana" : 6,
-  "Player2Mana" : 0
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -185,9 +161,6 @@
   },
   "error" : "Attacked card is not of type 'Tank’."
 }, {
-  "Player1Mana" : 1,
-  "Player2Mana" : 0
-}, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
     "x" : 2,
@@ -220,9 +193,6 @@
     "y" : 0
   },
   "error" : "Attacked card does not belong to the enenmy"
-}, {
-  "Player1Mana" : 7,
-  "Player2Mana" : 3
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {

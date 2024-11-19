@@ -4,7 +4,7 @@ import org.poo.main.Field;
 
 import java.util.ArrayList;
 
-public class KingMudface extends Cards {
+public final class KingMudface extends Cards {
     public KingMudface() {
         super();
     }

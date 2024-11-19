@@ -4,7 +4,7 @@ import org.poo.main.Field;
 
 import java.util.ArrayList;
 
-public class EmpressThorina extends Cards {
+public final class EmpressThorina extends Cards {
     public EmpressThorina() {
         super();
     }

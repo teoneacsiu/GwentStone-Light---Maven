@@ -1,10 +1,4 @@
 [ {
-  "Player1Mana" : 3,
-  "Player2Mana" : 1
-}, {
-  "Player1Mana" : 0,
-  "Player2Mana" : 1
-}, {
   "command" : "getCardsInHand",
   "playerIdx" : 2,
   "output" : [ {
@@ -44,18 +38,8 @@
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
-  "Player1Mana" : 3,
-  "Player2Mana" : 0
-}, {
   "command" : "placeCard",
   "handIdx" : 1,
-  "error" : "Not enough mana to place card on table."
-}, {
-  "Player1Mana" : 7,
-  "Player2Mana" : 0
-}, {
-  "command" : "placeCard",
-  "handIdx" : 2,
   "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardsInHand",
@@ -104,28 +88,9 @@
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
-  "Player1Mana" : 12,
-  "Player2Mana" : 1
-}, {
   "command" : "placeCard",
   "handIdx" : 0,
   "error" : "Not enough mana to place card on table."
-}, {
-  "Player1Mana" : 8,
-  "Player2Mana" : 1
-}, {
-  "Player1Mana" : 4,
-  "Player2Mana" : 1
-}, {
-  "Player1Mana" : 10,
-  "Player2Mana" : 4
-}, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
-}, {
-  "Player1Mana" : 6,
-  "Player2Mana" : 4
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,

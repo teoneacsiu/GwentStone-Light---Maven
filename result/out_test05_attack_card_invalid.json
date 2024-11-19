@@ -1,20 +1,8 @@
 [ {
-  "Player1Mana" : 3,
-  "Player2Mana" : 0
-}, {
-  "Player1Mana" : 0,
-  "Player2Mana" : 0
-}, {
-  "Player1Mana" : 3,
-  "Player2Mana" : 2
-}, {
   "command" : "getCardAtPosition",
   "x" : 0,
   "y" : 3,
   "output" : "No card available at that position."
-}, {
-  "Player1Mana" : 1,
-  "Player2Mana" : 2
 }, {
   "command" : "getCardAtPosition",
   "x" : 2,
@@ -86,12 +74,6 @@
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
-  "Player1Mana" : 5,
-  "Player2Mana" : 5
-}, {
-  "Player1Mana" : 5,
-  "Player2Mana" : 3
-}, {
   "command" : "getCardAtPosition",
   "x" : 1,
   "y" : 0,
@@ -103,18 +85,6 @@
     "colors" : [ "Brown", "Black", "Grey" ],
     "name" : "Goliath"
   }
-}, {
-  "Player1Mana" : 3,
-  "Player2Mana" : 3
-}, {
-  "Player1Mana" : 0,
-  "Player2Mana" : 3
-}, {
-  "Player1Mana" : 5,
-  "Player2Mana" : 4
-}, {
-  "Player1Mana" : 1,
-  "Player2Mana" : 4
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,

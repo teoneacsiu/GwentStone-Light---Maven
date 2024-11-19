@@ -1,11 +1,5 @@
 [ {
-  "Player1Mana" : 3,
-  "Player2Mana" : 2
-}, {
   "error" : "Card not found"
-}, {
-  "Player1Mana" : 1,
-  "Player2Mana" : 2
 }, {
   "error" : "Card not found"
 }, {
@@ -33,9 +27,6 @@
 }, {
   "command" : "getPlayerTurn",
   "output" : 2
-}, {
-  "Player1Mana" : 4,
-  "Player2Mana" : 4
 }, {
   "command" : "getCardAtPosition",
   "x" : 0,
@@ -85,12 +76,6 @@
 }, {
   "error" : "Card not found"
 }, {
-  "Player1Mana" : 2,
-  "Player2Mana" : 4
-}, {
-  "Player1Mana" : 0,
-  "Player2Mana" : 4
-}, {
   "error" : "Card not found"
 }, {
   "error" : "Card not found"
@@ -121,12 +106,6 @@
 }, {
   "command" : "getPlayerTurn",
   "output" : 2
-}, {
-  "Player1Mana" : 4,
-  "Player2Mana" : 6
-}, {
-  "Player1Mana" : 4,
-  "Player2Mana" : 5
 }, {
   "command" : "getCardAtPosition",
   "x" : 0,
@@ -180,9 +159,6 @@
 }, {
   "error" : "Card not found"
 }, {
-  "Player1Mana" : 2,
-  "Player2Mana" : 5
-}, {
   "error" : "Card not found"
 }, {
   "error" : "Card not found"
@@ -190,9 +166,6 @@
   "error" : "Card not found"
 }, {
   "error" : "Card not found"
-}, {
-  "Player1Mana" : 7,
-  "Player2Mana" : 9
 }, {
   "error" : "Card not found"
 }, {

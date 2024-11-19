@@ -9,10 +9,14 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CardInput;
 import lombok.Getter;
-import org.poo.playingcards.*;
+import org.poo.playingcards.Cards;
+import org.poo.playingcards.Disciple;
+import org.poo.playingcards.TheRipper;
+import org.poo.playingcards.Miraj;
+import org.poo.playingcards.TheCursedOne;
 
 
-public class Deck {
+public final class Deck {
     @Getter
     private int numOfCards;
     private final ArrayList<Cards> cards;
@@ -22,12 +26,12 @@ public class Deck {
         cards = new ArrayList<>();
     }
 
-    public void addCard(Cards card) {
+    public void addCard(final Cards card) {
         cards.add(card);
         numOfCards++;
     }
 
-    public void addCard(CardInput cardInput) {
+    public void addCard(final CardInput cardInput) {
         Cards currentCard = switch (cardInput.getName()) {
             case "Disciple" -> new Disciple(cardInput.getMana(), cardInput.getHealth(),
                     cardInput.getAttackDamage(), cardInput.getDescription(),
@@ -49,12 +53,20 @@ public class Deck {
         cards.add(currentCard);
     }
 
-    public void shuffle(int seed) {
+    public void shuffle(final int seed) {
         Random rand = new Random(seed);
         Collections.shuffle(cards, rand);
     }
 
-    public Cards dealCard(int index) {
+    public boolean cardExists(final int index) {
+        if (cards.size() <= index) {
+            return false;
+        }
+
+        return cards.get(index) != null;
+    }
+
+    public Cards dealCard(final int index) {
         if (index >= cards.size()) {
             return null;
         }

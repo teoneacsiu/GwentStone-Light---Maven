@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class Coords {
+public final class Coords {
     private final int x;
     private final int y;
 

@@ -1,7 +1,4 @@
 [ {
-  "Player1Mana" : 1,
-  "Player2Mana" : 0
-}, {
   "error" : "Card not found"
 }, {
   "command" : "getPlayerTurn",
@@ -17,18 +14,12 @@
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
 }, {
-  "Player1Mana" : 3,
-  "Player2Mana" : 0
-}, {
   "error" : "Card not found"
 }, {
   "error" : "Card not found"
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
-}, {
-  "Player1Mana" : 1,
-  "Player2Mana" : 0
 }, {
   "command" : "getCardAtPosition",
   "x" : 2,
@@ -50,18 +41,9 @@
 }, {
   "error" : "Card not found"
 }, {
-  "Player1Mana" : 4,
-  "Player2Mana" : 2
-}, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
   "output" : 2
-}, {
-  "Player1Mana" : 2,
-  "Player2Mana" : 2
-}, {
-  "Player1Mana" : 1,
-  "Player2Mana" : 2
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
@@ -70,18 +52,12 @@
   "command" : "getPlayerTurn",
   "output" : 1
 }, {
-  "Player1Mana" : 5,
-  "Player2Mana" : 5
-}, {
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
   "output" : 5
-}, {
-  "Player1Mana" : 4,
-  "Player2Mana" : 5
 }, {
   "command" : "getCardAtPosition",
   "x" : 2,
@@ -109,9 +85,6 @@
   "playerIdx" : 1,
   "output" : 4
 }, {
-  "Player1Mana" : 9,
-  "Player2Mana" : 9
-}, {
   "command" : "getCardAtPosition",
   "x" : 0,
   "y" : 0,
@@ -130,14 +103,8 @@
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
-  "Player1Mana" : 7,
-  "Player2Mana" : 9
-}, {
   "command" : "getPlayerTurn",
   "output" : 1
-}, {
-  "Player1Mana" : 10,
-  "Player2Mana" : 14
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
@@ -153,9 +120,6 @@
     "y" : 1
   },
   "error" : "Attacked card does not belong to the enenmy"
-}, {
-  "Player1Mana" : 8,
-  "Player2Mana" : 14
 }, {
   "command" : "getCardAtPosition",
   "x" : 2,
@@ -175,9 +139,6 @@
 }, {
   "error" : "Card not found"
 }, {
-  "Player1Mana" : 12,
-  "Player2Mana" : 20
-}, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
     "x" : 1,
@@ -191,9 +152,6 @@
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
-}, {
-  "Player1Mana" : 10,
-  "Player2Mana" : 20
 }, {
   "command" : "getCardAtPosition",
   "x" : 2,
@@ -220,9 +178,6 @@
     "y" : 1
   },
   "error" : "Attacked card does not belong to the enenmy"
-}, {
-  "Player1Mana" : 15,
-  "Player2Mana" : 27
 }, {
   "command" : "getCardAtPosition",
   "x" : 0,
@@ -251,9 +206,6 @@
   "playerIdx" : 2,
   "output" : 27
 }, {
-  "Player1Mana" : 14,
-  "Player2Mana" : 27
-}, {
   "command" : "getCardAtPosition",
   "x" : 2,
   "y" : 0,
@@ -276,9 +228,6 @@
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
 }, {
-  "Player1Mana" : 23,
-  "Player2Mana" : 34
-}, {
   "command" : "getCardAtPosition",
   "x" : 0,
   "y" : 0,
@@ -293,9 +242,6 @@
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
-}, {
-  "Player1Mana" : 21,
-  "Player2Mana" : 34
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
@@ -314,9 +260,6 @@
     "y" : 3
   },
   "error" : "Attacked card does not belong to the enenmy"
-}, {
-  "Player1Mana" : 28,
-  "Player2Mana" : 43
 }, {
   "command" : "getCardAtPosition",
   "x" : 0,
@@ -605,10 +548,6 @@
   "playerIdx" : 1,
   "output" : 1
 }, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
-}, {
   "command" : "getCardAtPosition",
   "x" : 1,
   "y" : 0,
@@ -621,9 +560,6 @@
   "output" : [ ]
 }, {
   "error" : "Card not found"
-}, {
-  "Player1Mana" : 1,
-  "Player2Mana" : 3
 }, {
   "command" : "getCardAtPosition",
   "x" : 2,
@@ -644,10 +580,6 @@
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
-}, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 1,
@@ -671,12 +603,6 @@
   "playerIdx" : 2,
   "output" : 3
 }, {
-  "Player1Mana" : 3,
-  "Player2Mana" : 6
-}, {
-  "Player1Mana" : 2,
-  "Player2Mana" : 6
-}, {
   "command" : "cardUsesAttack",
   "cardAttacker" : {
     "x" : 2,
@@ -707,10 +633,6 @@
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
 }, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
-}, {
   "command" : "getCardAtPosition",
   "x" : 1,
   "y" : 0,
@@ -735,9 +657,6 @@
 }, {
   "error" : "Card not found"
 }, {
-  "Player1Mana" : 4,
-  "Player2Mana" : 10
-}, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
 }, {
@@ -755,10 +674,6 @@
     "y" : 0
   },
   "error" : "Card not found."
-}, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 1,
@@ -778,9 +693,6 @@
     "y" : 0
   },
   "error" : "Card not found."
-}, {
-  "Player1Mana" : 7,
-  "Player2Mana" : 12
 }, {
   "command" : "getCardAtPosition",
   "x" : 2,
@@ -810,10 +722,6 @@
 }, {
   "command" : "getPlayerTurn",
   "output" : 1
-}, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 1,
@@ -834,9 +742,6 @@
   },
   "error" : "Card not found."
 }, {
-  "Player1Mana" : 11,
-  "Player2Mana" : 18
-}, {
   "command" : "getCardAtPosition",
   "x" : 2,
   "y" : 0,
@@ -863,10 +768,6 @@
   },
   "error" : "Card not found."
 }, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
-}, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
   "output" : 18
@@ -877,9 +778,6 @@
   "command" : "getPlayerTurn",
   "output" : 2
 }, {
-  "Player1Mana" : 16,
-  "Player2Mana" : 25
-}, {
   "command" : "getPlayerTurn",
   "output" : 1
 }, {
@@ -889,10 +787,6 @@
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
-}, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getPlayerTurn",
   "output" : 2
@@ -912,9 +806,6 @@
   },
   "error" : "Card not found."
 }, {
-  "Player1Mana" : 23,
-  "Player2Mana" : 33
-}, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,
   "output" : 23
@@ -924,10 +815,6 @@
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
-}, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 1,
@@ -950,10 +837,6 @@
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
-}, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -1010,10 +893,6 @@
     "y" : 1
   },
   "error" : "Card not found."
-}, {
-  "command" : "placeCard",
-  "handIdx" : 0,
-  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 0,

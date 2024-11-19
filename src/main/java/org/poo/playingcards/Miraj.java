@@ -2,7 +2,7 @@ package org.poo.playingcards;
 
 import java.util.ArrayList;
 
-public class Miraj extends Cards {
+public final class Miraj extends Cards {
     public Miraj() {
         super();
     }

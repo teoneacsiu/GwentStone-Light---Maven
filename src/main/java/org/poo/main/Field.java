@@ -6,13 +6,13 @@ import org.poo.playingcards.Cards;
 
 import java.util.ArrayList;
 
-public class Field {
+public final class Field {
     public static final int TABLE_ROWS = 4;
     public static final int TABLE_COLS = 5;
-    private static final ArrayList<String> tanks = new ArrayList<>();
+    private static final ArrayList<String> TANKS = new ArrayList<>();
     static {
-        tanks.add("Goliath");
-        tanks.add("Warden");
+        TANKS.add("Goliath");
+        TANKS.add("Warden");
     }
 
     private final Cards[][] field = new Cards[TABLE_ROWS][TABLE_COLS];
@@ -43,7 +43,7 @@ public class Field {
         boolean exists = false;
         for (int i = 0; i < TABLE_COLS; i++) {
             if (field[row][i] != null) {
-                if (tanks.contains(getCard(row, i).getName())) {
+                if (TANKS.contains(getCard(row, i).getName())) {
                     exists = true;
                 }
             }
@@ -52,7 +52,7 @@ public class Field {
     }
 
     public boolean attackedCardIsTank(final int row, final int col) {
-        return tanks.contains(getCard(row, col).getName());
+        return TANKS.contains(getCard(row, col).getName());
     }
 
     public void removeCard(final int defenseX, final int defenseY) {
