@@ -9,18 +9,20 @@ public class GeneralKocioraw extends Cards {
         super();
     }
 
-    public GeneralKocioraw(int mana,
-                     String description, ArrayList<String> colors, String name) {
-        super(mana, 30, 0, description, colors, name);
+    public GeneralKocioraw(final int mana,
+                           final String description, final ArrayList<String> colors,
+                           final String name) {
+        super(mana, Cards.HERO_HEALTH, 0, description, colors, name);
     }
 
     @Override
-    public boolean useAbility(Field field, int row) {
-        for (int i = 0; i < 5; i++) {
+    public boolean useAbility(final Field field, final int row) {
+        for (int i = 0; i < Field.TABLE_COLS; i++) {
             if (field.getCard(row, i) != null) {
-            field.getCard(row, i).setAttackDamage(
+                field.getCard(row, i).setAttackDamage(
                     field.getCard(row, i).getAttackDamage() + 1
-            );}
+                );
+            }
         }
         super.setUsed(true);
         return true;

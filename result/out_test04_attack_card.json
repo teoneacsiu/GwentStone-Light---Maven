@@ -5,17 +5,6 @@
   "Player1Mana" : 0,
   "Player2Mana" : 2
 }, {
-  "command" : "cardUsesAttack",
-  "cardAttacker" : {
-    "x" : 2,
-    "y" : 0
-  },
-  "cardAttacked" : {
-    "x" : 0,
-    "y" : 0
-  },
-  "error" : "Card not found."
-}, {
   "Player1Mana" : 0,
   "Player2Mana" : 0
 }, {
@@ -47,17 +36,6 @@
   "Player1Mana" : 1,
   "Player2Mana" : 3
 }, {
-  "command" : "cardUsesAttack",
-  "cardAttacker" : {
-    "x" : 2,
-    "y" : 0
-  },
-  "cardAttacked" : {
-    "x" : 1,
-    "y" : 0
-  },
-  "error" : "Card not found."
-}, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
   "output" : 3
@@ -70,17 +48,10 @@
   "output" : 2
 }, {
   "command" : "getCardsOnTable",
-  "output" : [ [ {
-    "mana" : 2,
-    "attackDamage" : 2,
-    "health" : 5,
-    "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
-    "colors" : [ "Black", "White", "Green" ],
-    "name" : "Warden"
-  } ], [ ], [ {
+  "output" : [ [ ], [ ], [ {
     "mana" : 3,
     "attackDamage" : 3,
-    "health" : 2,
+    "health" : 3,
     "description" : "Premium card: You shall not pass, you shall not prevail, you shall perish.",
     "colors" : [ "Black", "White", "Green" ],
     "name" : "Warden"

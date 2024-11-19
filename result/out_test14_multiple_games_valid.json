@@ -70,17 +70,6 @@
   "command" : "getPlayerTurn",
   "output" : 1
 }, {
-  "command" : "cardUsesAttack",
-  "cardAttacker" : {
-    "x" : 2,
-    "y" : 1
-  },
-  "cardAttacked" : {
-    "x" : 1,
-    "y" : 1
-  },
-  "error" : "Card not found."
-}, {
   "Player1Mana" : 5,
   "Player2Mana" : 5
 }, {
@@ -127,12 +116,12 @@
   "x" : 0,
   "y" : 0,
   "output" : {
-    "mana" : 2,
-    "attackDamage" : 5,
+    "mana" : 1,
+    "attackDamage" : 0,
     "health" : 4,
-    "description" : "Standard card: Death incarnate. No better time to die than now.",
-    "colors" : [ "Orange", "Red", "Black" ],
-    "name" : "The Ripper"
+    "description" : "Standard card: Everything is sacred to him, all is but a gift from the saints.",
+    "colors" : [ "Green", "Yellow", "Blue" ],
+    "name" : "Disciple"
   }
 }, {
   "command" : "getFrozenCardsOnTable",
@@ -163,7 +152,7 @@
     "x" : 2,
     "y" : 1
   },
-  "error" : "Attacked card does not belong to the current player"
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "Player1Mana" : 8,
   "Player2Mana" : 14
@@ -198,21 +187,10 @@
     "x" : 2,
     "y" : 1
   },
-  "error" : "Attacked card does not belong to the current player"
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
-}, {
-  "command" : "cardUsesAttack",
-  "cardAttacker" : {
-    "x" : 0,
-    "y" : 3
-  },
-  "cardAttacked" : {
-    "x" : 2,
-    "y" : 0
-  },
-  "error" : "Card not found."
 }, {
   "Player1Mana" : 10,
   "Player2Mana" : 20
@@ -250,12 +228,12 @@
   "x" : 0,
   "y" : 0,
   "output" : {
-    "mana" : 2,
-    "attackDamage" : 5,
+    "mana" : 1,
+    "attackDamage" : 0,
     "health" : 4,
-    "description" : "Standard card: Death incarnate. No better time to die than now.",
-    "colors" : [ "Orange", "Red", "Black" ],
-    "name" : "The Ripper"
+    "description" : "Standard card: Everything is sacred to him, all is but a gift from the saints.",
+    "colors" : [ "Green", "Yellow", "Blue" ],
+    "name" : "Disciple"
   }
 }, {
   "command" : "cardUsesAbility",
@@ -267,7 +245,7 @@
     "x" : 2,
     "y" : 0
   },
-  "error" : "Attacked card does not belong to the current player"
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
@@ -282,7 +260,7 @@
   "output" : {
     "mana" : 2,
     "attackDamage" : 6,
-    "health" : 2,
+    "health" : 7,
     "description" : "Premium card: No matter how many, his body will fight. Save your breath for the Mountain is strong.",
     "colors" : [ "Red", "Purple" ],
     "name" : "Goliath"
@@ -305,12 +283,12 @@
   "x" : 0,
   "y" : 0,
   "output" : {
-    "mana" : 2,
-    "attackDamage" : 5,
+    "mana" : 1,
+    "attackDamage" : 0,
     "health" : 4,
-    "description" : "Standard card: Death incarnate. No better time to die than now.",
-    "colors" : [ "Orange", "Red", "Black" ],
-    "name" : "The Ripper"
+    "description" : "Standard card: Everything is sacred to him, all is but a gift from the saints.",
+    "colors" : [ "Green", "Yellow", "Blue" ],
+    "name" : "Disciple"
   }
 }, {
   "command" : "getFrozenCardsOnTable",
@@ -344,12 +322,12 @@
   "x" : 0,
   "y" : 0,
   "output" : {
-    "mana" : 2,
-    "attackDamage" : 5,
+    "mana" : 1,
+    "attackDamage" : 0,
     "health" : 4,
-    "description" : "Standard card: Death incarnate. No better time to die than now.",
-    "colors" : [ "Orange", "Red", "Black" ],
-    "name" : "The Ripper"
+    "description" : "Standard card: Everything is sacred to him, all is but a gift from the saints.",
+    "colors" : [ "Green", "Yellow", "Blue" ],
+    "name" : "Disciple"
   }
 }, {
   "command" : "getPlayerTurn",
@@ -377,6 +355,17 @@
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
 }, {
+  "command" : "cardUsesAbility",
+  "cardAttacker" : {
+    "x" : 1,
+    "y" : 2
+  },
+  "cardAttacked" : {
+    "x" : 2,
+    "y" : 1
+  },
+  "error" : "Card not found."
+}, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
 }, {
@@ -386,8 +375,30 @@
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
 }, {
+  "command" : "cardUsesAbility",
+  "cardAttacker" : {
+    "x" : 0,
+    "y" : 4
+  },
+  "cardAttacked" : {
+    "x" : 2,
+    "y" : 1
+  },
+  "error" : "Card not found."
+}, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
+}, {
+  "command" : "cardUsesAttack",
+  "cardAttacker" : {
+    "x" : 0,
+    "y" : 4
+  },
+  "cardAttacked" : {
+    "x" : 2,
+    "y" : 1
+  },
+  "error" : "Card not found."
 }, {
   "command" : "getPlayerTurn",
   "output" : 2
@@ -403,12 +414,12 @@
   "x" : 0,
   "y" : 0,
   "output" : {
-    "mana" : 2,
-    "attackDamage" : 5,
+    "mana" : 1,
+    "attackDamage" : 0,
     "health" : 4,
-    "description" : "Standard card: Death incarnate. No better time to die than now.",
-    "colors" : [ "Orange", "Red", "Black" ],
-    "name" : "The Ripper"
+    "description" : "Standard card: Everything is sacred to him, all is but a gift from the saints.",
+    "colors" : [ "Green", "Yellow", "Blue" ],
+    "name" : "Disciple"
   }
 }, {
   "command" : "getFrozenCardsOnTable",
@@ -423,11 +434,22 @@
     "x" : 2,
     "y" : 1
   },
-  "error" : "Attacked card does not belong to the current player"
+  "error" : "Card not found."
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
   "output" : 83
+}, {
+  "command" : "cardUsesAttack",
+  "cardAttacker" : {
+    "x" : 0,
+    "y" : 0
+  },
+  "cardAttacked" : {
+    "x" : 2,
+    "y" : 1
+  },
+  "error" : "Card not found."
 }, {
   "command" : "getFrozenCardsOnTable",
   "output" : [ ]
@@ -448,47 +470,19 @@
 }, {
   "command" : "getCardsOnTable",
   "output" : [ [ {
-    "mana" : 2,
-    "attackDamage" : 5,
-    "health" : 4,
-    "description" : "Standard card: Death incarnate. No better time to die than now.",
-    "colors" : [ "Orange", "Red", "Black" ],
-    "name" : "The Ripper"
-  }, {
-    "mana" : 1,
-    "attackDamage" : 8,
-    "health" : 5,
-    "description" : "Standard card: He has seen everything, his mind has never been asleep since the making of the realm.",
-    "colors" : [ "Black", "White", "Green" ],
-    "name" : "Warden"
-  }, {
-    "mana" : 1,
-    "attackDamage" : 5,
-    "health" : 7,
-    "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
-    "colors" : [ "Red", "Purple" ],
-    "name" : "Goliath"
-  }, {
-    "mana" : 1,
-    "attackDamage" : 5,
-    "health" : 4,
-    "description" : "Premium card: Ravished by the winds of hell, no soul is to be forgiven.",
-    "colors" : [ "Orange", "Red", "Black" ],
-    "name" : "The Ripper"
-  }, {
-    "mana" : 2,
-    "attackDamage" : 4,
-    "health" : 8,
-    "description" : "Premium card: No matter how many, his body will fight. Save your breath for the Mountain is strong.",
-    "colors" : [ "Brown", "Black", "Grey" ],
-    "name" : "Goliath"
-  } ], [ {
     "mana" : 1,
     "attackDamage" : 0,
     "health" : 4,
     "description" : "Standard card: Everything is sacred to him, all is but a gift from the saints.",
     "colors" : [ "Green", "Yellow", "Blue" ],
     "name" : "Disciple"
+  }, {
+    "mana" : 1,
+    "attackDamage" : 6,
+    "health" : 1,
+    "description" : "Premium card: Fear him. Your last breath is now.",
+    "colors" : [ "Purple", "Yellow" ],
+    "name" : "Berserker"
   }, {
     "mana" : 1,
     "attackDamage" : 6,
@@ -499,21 +493,49 @@
   }, {
     "mana" : 1,
     "attackDamage" : 0,
+    "health" : 4,
+    "description" : "Premium card: The will of Gods has been spoken, obey and you shall be saved...or not.",
+    "colors" : [ "Green", "Yellow", "Blue" ],
+    "name" : "Disciple"
+  }, {
+    "mana" : 1,
+    "attackDamage" : 0,
     "health" : 1,
     "description" : "Premium card: Nobody suspects an outcast, not even the Gods.",
     "colors" : [ "Black", "White", "Red" ],
     "name" : "The Cursed One"
   } ], [ {
     "mana" : 2,
+    "attackDamage" : 5,
+    "health" : 4,
+    "description" : "Standard card: Death incarnate. No better time to die than now.",
+    "colors" : [ "Orange", "Red", "Black" ],
+    "name" : "The Ripper"
+  }, {
+    "mana" : 1,
+    "attackDamage" : 5,
+    "health" : 4,
+    "description" : "Premium card: Ravished by the winds of hell, no soul is to be forgiven.",
+    "colors" : [ "Orange", "Red", "Black" ],
+    "name" : "The Ripper"
+  }, {
+    "mana" : 2,
+    "attackDamage" : 4,
+    "health" : 4,
+    "description" : "Premium card: No matter how many, his body will fight. Save your breath for the Mountain is strong.",
+    "colors" : [ "Brown", "Black", "Grey" ],
+    "name" : "Goliath"
+  } ], [ {
+    "mana" : 2,
     "attackDamage" : 7,
-    "health" : 2,
+    "health" : 7,
     "description" : "Premium card: No matter how many, his body will fight. Save your breath for the Mountain is strong.",
     "colors" : [ "Red", "Purple" ],
     "name" : "Goliath"
   }, {
     "mana" : 1,
     "attackDamage" : 10,
-    "health" : 1,
+    "health" : 6,
     "description" : "Standard card: He has seen everything, his mind has never been asleep since the making of the realm.",
     "colors" : [ "Brown", "Blue" ],
     "name" : "Warden"
@@ -584,8 +606,8 @@
   "output" : 1
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 1,
@@ -624,8 +646,8 @@
   "output" : [ ]
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 1,
@@ -686,8 +708,8 @@
   "output" : [ ]
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 1,
@@ -735,8 +757,8 @@
   "error" : "Card not found."
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 1,
@@ -790,8 +812,8 @@
   "output" : 1
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 1,
@@ -842,8 +864,8 @@
   "error" : "Card not found."
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,
@@ -869,8 +891,8 @@
   "output" : [ ]
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getPlayerTurn",
   "output" : 2
@@ -904,8 +926,8 @@
   "output" : [ ]
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 1,
@@ -930,8 +952,8 @@
   "output" : [ ]
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -990,8 +1012,8 @@
   "error" : "Card not found."
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardAtPosition",
   "x" : 0,

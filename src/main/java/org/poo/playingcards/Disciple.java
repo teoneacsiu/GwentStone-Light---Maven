@@ -7,13 +7,14 @@ public class Disciple extends Cards {
         super();
     }
 
-    public Disciple(int mana, int health, int attackDamage,
-                    String description, ArrayList<String> colors, String name) {
+    public Disciple(final int mana, final int health, final int attackDamage,
+                    final String description, final ArrayList<String> colors,
+                    final String name) {
         super(mana, health, attackDamage, description, colors, name);
     }
 
     @Override
-    public boolean useAbility(Cards card) {
+    public boolean useAbility(final Cards card) {
         card.setHealth(card.getHealth());
         super.setUsed(true);
         return false;

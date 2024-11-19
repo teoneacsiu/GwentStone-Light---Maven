@@ -7,8 +7,8 @@ import org.poo.playingcards.Cards;
 import java.util.ArrayList;
 
 public class Field {
-    private static final int TABLE_ROWS = 4;
-    private static final int TABLE_COLS = 5;
+    public static final int TABLE_ROWS = 4;
+    public static final int TABLE_COLS = 5;
     private static final ArrayList<String> tanks = new ArrayList<>();
     static {
         tanks.add("Goliath");

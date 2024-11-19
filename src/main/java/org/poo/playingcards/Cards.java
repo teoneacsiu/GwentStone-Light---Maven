@@ -12,20 +12,21 @@ import java.util.ArrayList;
 @Setter
 @Getter
 public class Cards {
-    private static final ArrayList<String> frontRowMinions = new ArrayList<>();
+    public static final int HERO_HEALTH = 30;
+    private static final ArrayList<String> FRONT_ROW_MINIONS = new ArrayList<>();
     static {
-        frontRowMinions.add("Goliath");
-        frontRowMinions.add("Warden");
-        frontRowMinions.add("The Ripper");
-        frontRowMinions.add("Miraj");
+        FRONT_ROW_MINIONS.add("Goliath");
+        FRONT_ROW_MINIONS.add("Warden");
+        FRONT_ROW_MINIONS.add("The Ripper");
+        FRONT_ROW_MINIONS.add("Miraj");
     }
 
-    private static final ArrayList<String> backRowMinions = new ArrayList<>();
+    private static final ArrayList<String> BACK_ROW_MINIONS = new ArrayList<>();
     static {
-        backRowMinions.add("Sentinel");
-        backRowMinions.add("Berserker");
-        backRowMinions.add("The Cursed One");
-        backRowMinions.add("Disciple");
+        BACK_ROW_MINIONS.add("Sentinel");
+        BACK_ROW_MINIONS.add("Berserker");
+        BACK_ROW_MINIONS.add("The Cursed One");
+        BACK_ROW_MINIONS.add("Disciple");
     }
 
     private int mana;
@@ -48,8 +49,8 @@ public class Cards {
         frozen = false;
     }
 
-    public Cards(int mana, int health, int attackDamage,
-                 String description, ArrayList<String> colors, String name) {
+    public Cards(final int mana, final int health, final int attackDamage,
+                 final String description, final ArrayList<String> colors, final String name) {
         this.mana = mana;
         this.health = health;
         this.attackDamage = attackDamage;
@@ -62,10 +63,12 @@ public class Cards {
 
     public int getCardRow() {
         int row = 0;
-        if (frontRowMinions.contains(name))
+        if (FRONT_ROW_MINIONS.contains(name)) {
             row = 1;
-        if (backRowMinions.contains(name))
+        }
+        if (BACK_ROW_MINIONS.contains(name)) {
             row = 2;
+        }
         return row;
     }
 
@@ -75,16 +78,18 @@ public class Cards {
 
     public void attack(Cards defender) {
         used = true;
-        if(defender.getHealth() < attackDamage)
+        if (defender.getHealth() < attackDamage) {
             defender.setHealth(0);
-        else defender.setHealth(defender.getHealth() - attackDamage);
+        } else {
+            defender.setHealth(defender.getHealth() - attackDamage);
+        }
     }
 
-    public boolean useAbility(Cards card) {
+    public boolean useAbility(final Cards card) {
         return false;
     }
 
-    public boolean useAbility(Field field, int row) {
+    public boolean useAbility(final Field field, final int row) {
         return false;
     }
 

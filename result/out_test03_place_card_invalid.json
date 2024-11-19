@@ -48,15 +48,15 @@
   "Player2Mana" : 0
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 1
+  "handIdx" : 1,
+  "error" : "Not enough mana to place card on table."
 }, {
   "Player1Mana" : 7,
   "Player2Mana" : 0
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 2
+  "handIdx" : 2,
+  "error" : "Not enough mana to place card on table."
 }, {
   "command" : "getCardsInHand",
   "playerIdx" : 2,
@@ -108,8 +108,8 @@
   "Player2Mana" : 1
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "Player1Mana" : 8,
   "Player2Mana" : 1
@@ -121,8 +121,8 @@
   "Player2Mana" : 4
 }, {
   "command" : "placeCard",
-  "error" : "Not enough mana to place card on table.",
-  "handIdx" : 0
+  "handIdx" : 0,
+  "error" : "Not enough mana to place card on table."
 }, {
   "Player1Mana" : 6,
   "Player2Mana" : 4
@@ -139,7 +139,7 @@
   "output" : 2
 }, {
   "command" : "getCardsOnTable",
-  "output" : [ [ {
+  "output" : [ [ ], [ {
     "mana" : 2,
     "attackDamage" : 2,
     "health" : 5,
@@ -174,7 +174,7 @@
     "description" : "Standard card: Death incarnate. No better time to die than now.",
     "colors" : [ "Orange", "Red", "Black" ],
     "name" : "The Ripper"
-  } ], [ ], [ {
+  } ], [ {
     "mana" : 3,
     "attackDamage" : 1,
     "health" : 8,

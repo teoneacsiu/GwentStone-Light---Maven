@@ -27,7 +27,7 @@ public class Player {
     @Getter
     private int losses;
 
-    public Player(DecksInput decksInput) {
+    public Player(final DecksInput decksInput) {
         this.hand = new Deck();
         originalDeck = new Deck();
         mana = 0;
@@ -48,7 +48,7 @@ public class Player {
         }
     }
 
-    public void setHero(CardInput hero) {
+    public void setHero(final CardInput hero) {
         switch (hero.getName()) {
             case "Empress Thorina":
                 this.hero = new EmpressThorina(hero.getMana(), hero.getDescription(),
@@ -79,12 +79,12 @@ public class Player {
         mana = 0;
     }
 
-    public void shuffle(int seed) {
+    public void shuffle(final int seed) {
         deck = originalDeck;
         deck.shuffle(seed);
     }
 
-    public void chooseDeck(int deckIdx) {
+    public void chooseDeck(final int deckIdx) {
         originalDeck = availableDecks.get(deckIdx);
     }
 
@@ -94,7 +94,7 @@ public class Player {
         }
     }
 
-    public Cards getCard(int index) {
+    public Cards getCard(final int index) {
         if (index < 0 || index >= hand.getNumOfCards()) {
             System.out.println("Invalid index for hand: " + index);
             return null;

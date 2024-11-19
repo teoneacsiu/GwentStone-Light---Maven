@@ -5,17 +5,6 @@
   "Player1Mana" : 0,
   "Player2Mana" : 0
 }, {
-  "command" : "cardUsesAttack",
-  "cardAttacker" : {
-    "x" : 2,
-    "y" : 0
-  },
-  "cardAttacked" : {
-    "x" : 1,
-    "y" : 0
-  },
-  "error" : "Card not found."
-}, {
   "Player1Mana" : 3,
   "Player2Mana" : 2
 }, {
@@ -107,12 +96,12 @@
   "x" : 1,
   "y" : 0,
   "output" : {
-    "mana" : 1,
+    "mana" : 3,
     "attackDamage" : 2,
-    "health" : 2,
-    "description" : "Premium card: His presence is not known even by ghosts, success at all costs.",
-    "colors" : [ "Black", "White" ],
-    "name" : "Sentinel"
+    "health" : 5,
+    "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
+    "colors" : [ "Brown", "Black", "Grey" ],
+    "name" : "Goliath"
   }
 }, {
   "Player1Mana" : 3,
@@ -137,27 +126,6 @@
 }, {
   "command" : "getCardsOnTable",
   "output" : [ [ {
-    "mana" : 3,
-    "attackDamage" : 2,
-    "health" : 5,
-    "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
-    "colors" : [ "Brown", "Black", "Grey" ],
-    "name" : "Goliath"
-  }, {
-    "mana" : 4,
-    "attackDamage" : 4,
-    "health" : 3,
-    "description" : "Premium card: Insanity is always an option, now it is an absolute.",
-    "colors" : [ "Yellow", "Orange", "Red" ],
-    "name" : "Miraj"
-  } ], [ {
-    "mana" : 1,
-    "attackDamage" : 2,
-    "health" : 2,
-    "description" : "Premium card: His presence is not known even by ghosts, success at all costs.",
-    "colors" : [ "Black", "White" ],
-    "name" : "Sentinel"
-  }, {
     "mana" : 1,
     "attackDamage" : 3,
     "health" : 1,
@@ -171,6 +139,20 @@
     "description" : "Premium card: Nobody suspects an outcast, not even the Gods.",
     "colors" : [ "Pink", "Purple" ],
     "name" : "The Cursed One"
+  } ], [ {
+    "mana" : 3,
+    "attackDamage" : 2,
+    "health" : 5,
+    "description" : "Standard card: A warrior who is never afraid of battle, no matter the costs",
+    "colors" : [ "Brown", "Black", "Grey" ],
+    "name" : "Goliath"
+  }, {
+    "mana" : 4,
+    "attackDamage" : 4,
+    "health" : 3,
+    "description" : "Premium card: Insanity is always an option, now it is an absolute.",
+    "colors" : [ "Yellow", "Orange", "Red" ],
+    "name" : "Miraj"
   } ], [ {
     "mana" : 3,
     "attackDamage" : 3,

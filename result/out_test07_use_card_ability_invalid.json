@@ -8,7 +8,14 @@
   "command" : "getCardAtPosition",
   "x" : 1,
   "y" : 0,
-  "output" : "No card available at that position."
+  "output" : {
+    "mana" : 4,
+    "attackDamage" : 5,
+    "health" : 3,
+    "description" : "Standard card: When he is near, close your eyes. They betray your mind.",
+    "colors" : [ "Yellow", "Orange", "Red" ],
+    "name" : "Miraj"
+  }
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -19,7 +26,7 @@
     "x" : 2,
     "y" : 0
   },
-  "error" : "Card not found."
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "Player1Mana" : 1,
   "Player2Mana" : 2
@@ -50,7 +57,7 @@
     "x" : 2,
     "y" : 0
   },
-  "error" : "Attacked card does not belong to the current player"
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "command" : "getCardsInHand",
   "playerIdx" : 1,
@@ -89,7 +96,7 @@
     "x" : 1,
     "y" : 1
   },
-  "error" : "Card not found."
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "Player1Mana" : 5,
   "Player2Mana" : 1
@@ -103,7 +110,7 @@
     "x" : 2,
     "y" : 1
   },
-  "error" : "Attacked card does not belong to the current player"
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -114,7 +121,7 @@
     "x" : 2,
     "y" : 0
   },
-  "error" : "Card not found."
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -125,7 +132,7 @@
     "x" : 2,
     "y" : 0
   },
-  "error" : "Card not found."
+  "error" : "Attacked card does not belong to the enenmy"
 }, {
   "command" : "cardUsesAbility",
   "cardAttacker" : {
@@ -136,7 +143,7 @@
     "x" : 2,
     "y" : 0
   },
-  "error" : "Attacked card does not belong to the enenmy"
+  "error" : "Attacked card does not belong to the current player"
 }, {
   "Player1Mana" : 1,
   "Player2Mana" : 1
@@ -160,6 +167,20 @@
 }, {
   "command" : "getCardsOnTable",
   "output" : [ [ {
+    "mana" : 2,
+    "attackDamage" : 0,
+    "health" : 3,
+    "description" : "Premium card: The will of Gods has been spoken, obey and you shall be saved...or not.",
+    "colors" : [ "Yellow", "White" ],
+    "name" : "Disciple"
+  }, {
+    "mana" : 3,
+    "attackDamage" : 0,
+    "health" : 3,
+    "description" : "Premium card: Nobody suspects an outcast, not even the Gods.",
+    "colors" : [ "Black", "White", "Red" ],
+    "name" : "The Cursed One"
+  } ], [ {
     "mana" : 4,
     "attackDamage" : 5,
     "health" : 2,
@@ -180,20 +201,6 @@
     "description" : "Standard card: Death incarnate. No better time to die than now.",
     "colors" : [ "Orange", "Red", "Black" ],
     "name" : "The Ripper"
-  } ], [ {
-    "mana" : 2,
-    "attackDamage" : 0,
-    "health" : 3,
-    "description" : "Premium card: The will of Gods has been spoken, obey and you shall be saved...or not.",
-    "colors" : [ "Yellow", "White" ],
-    "name" : "Disciple"
-  }, {
-    "mana" : 3,
-    "attackDamage" : 0,
-    "health" : 3,
-    "description" : "Premium card: Nobody suspects an outcast, not even the Gods.",
-    "colors" : [ "Black", "White", "Red" ],
-    "name" : "The Cursed One"
   } ], [ {
     "mana" : 2,
     "attackDamage" : 2,

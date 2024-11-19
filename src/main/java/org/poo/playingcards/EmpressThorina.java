@@ -9,21 +9,23 @@ public class EmpressThorina extends Cards {
         super();
     }
 
-    public EmpressThorina(int mana,
-                     String description, ArrayList<String> colors, String name) {
-        super(mana, 30, 0, description, colors, name);
+    public EmpressThorina(final int mana,
+                          final String description, final ArrayList<String> colors,
+                          final String name) {
+        super(mana, Cards.HERO_HEALTH, 0, description, colors, name);
     }
 
     @Override
-    public boolean useAbility(Field field, int row) {
+    public boolean useAbility(final Field field, final int row) {
         int max = 0;
         int removeX = 0;
-        for (int i = 4; i >= 0; i--) {
-            if (field.getCard(row, i) != null)
+        for (int i = Field.TABLE_COLS - 1; i >= 0; i--) {
+            if (field.getCard(row, i) != null) {
                 if (field.getCard(row, i).getHealth() > max) {
                     max = field.getCard(row, i).getHealth();
                     removeX = i;
                 }
+            }
         }
         if (max != 0) {
             field.removeCard(removeX, row);

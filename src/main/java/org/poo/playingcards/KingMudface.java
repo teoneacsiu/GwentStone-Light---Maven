@@ -9,14 +9,15 @@ public class KingMudface extends Cards {
         super();
     }
 
-    public KingMudface(int mana,
-                     String description, ArrayList<String> colors, String name) {
-        super(mana, 30, 0, description, colors, name);
+    public KingMudface(final int mana,
+                       final String description, final ArrayList<String> colors,
+                       final String name) {
+        super(mana, Cards.HERO_HEALTH, 0, description, colors, name);
     }
 
     @Override
-    public boolean useAbility(Field field, int row) {
-        for (int i = 0; i < 5; i++) {
+    public boolean useAbility(final Field field, final int row) {
+        for (int i = 0; i < Field.TABLE_COLS; i++) {
             field.getCard(row, i).setHealth(
                     field.getCard(row, i).getHealth() + 1
             );

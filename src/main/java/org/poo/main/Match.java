@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import static java.lang.Math.min;
 
 public class Match {
-    protected static final int PLAYER2_FRONT_ROW = 0;
-    protected static final int PLAYER2_BACK_ROW = 1;
+    protected static final int PLAYER2_FRONT_ROW = 1;
+    protected static final int PLAYER2_BACK_ROW = 0;
     protected static final int PLAYER1_FRONT_ROW = 2;
     protected static final int PLAYER1_BACK_ROW = 3;
     protected static final int MAX_MANA = 10;
@@ -87,8 +87,8 @@ public class Match {
                         break;
                     }
                     actionNode.put("command", action.getCommand());
-                    actionNode.put("error", res);
                     actionNode.put("handIdx", action.getHandIdx());
+                    actionNode.put("error", res);
                     break;
                 case "cardUsesAttack":
                     Coords attackerCoords = new Coords(action.getCardAttacker().getX(),
@@ -260,7 +260,7 @@ public class Match {
         if (card == null) {
             return notEnoughMana;
         }
-        System.out.println("PlacedCard Required Mana -> " + card.getMana()
+        System.out.println("PlacedCard Name -> " + card.getName()
                 + " for player:" + playerTurn);
 
         int row = card.getCardRow();
@@ -285,7 +285,7 @@ public class Match {
         return null;
     }
 
-    public String attackCard(Coords attackerCoords, Coords defenderCoords) {
+    public String attackCard(final Coords attackerCoords, final Coords defenderCoords) {
         Cards attacker = field.getCard(attackerCoords.getX(), attackerCoords.getY());
         Cards defender = field.getCard(defenderCoords.getX(), defenderCoords.getY());
 
@@ -310,8 +310,8 @@ public class Match {
                     && field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
                 return "Attacked card is not of type 'Tank’.";
             }
-        } else if (defenderCoords.getX() != PLAYER1_BACK_ROW &&
-                defenderCoords.getX() != PLAYER1_FRONT_ROW) {
+        } else if (defenderCoords.getX() != PLAYER1_BACK_ROW
+                && defenderCoords.getX() != PLAYER1_FRONT_ROW) {
             return "Attacked card does not belong to the enemy.";
         } else if (!field.existsTank(PLAYER1_FRONT_ROW)
                 && field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
@@ -326,7 +326,7 @@ public class Match {
         return null;
     }
 
-    public String useAbility (Coords attackerCoords, Coords defenderCoords) {
+    public String useAbility(final Coords attackerCoords, final Coords defenderCoords) {
         Cards attacker = field.getCard(attackerCoords.getX(), attackerCoords.getY());
         Cards defender = field.getCard(defenderCoords.getX(), defenderCoords.getY());
 
@@ -344,58 +344,71 @@ public class Match {
 
         if (attacker.getName().equals("Disciple")) {
             if (playerTurn == 1) {
-                if (defenderCoords.getX() == PLAYER2_BACK_ROW ||
-                        defenderCoords.getX() == PLAYER2_FRONT_ROW) {
+                if (defenderCoords.getX() == PLAYER2_BACK_ROW
+                        || defenderCoords.getX() == PLAYER2_FRONT_ROW) {
                     return "Attacked card does not belong to the current player";
                 }
-            } else if (playerTurn == 2)
-                if (defenderCoords.getX() == PLAYER1_BACK_ROW ||
-                        defenderCoords.getX() == PLAYER1_FRONT_ROW)
+            } else if (playerTurn == 2) {
+                if (defenderCoords.getX() == PLAYER1_BACK_ROW
+                        || defenderCoords.getX() == PLAYER1_FRONT_ROW) {
                     return "Attacked card does not belong to the current player";
+                }
+            }
         }
 
-        if (attacker.getName().equals("The Ripper") ||
-            attacker.getName().equals("Miraj") ||
-            attacker.getName().equals("The Cursed One")) {
+        if (attacker.getName().equals("The Ripper")
+            || attacker.getName().equals("Miraj")
+            || attacker.getName().equals("The Cursed One")) {
             if (playerTurn == 1) {
-                if (defenderCoords.getX() == PLAYER2_BACK_ROW ||
-                defenderCoords.getX() == PLAYER2_FRONT_ROW)
+                if (defenderCoords.getX() == PLAYER2_BACK_ROW
+                    || defenderCoords.getX() == PLAYER2_FRONT_ROW) {
                     return "Attacked card does not belong to the enenmy";
-            } else if (playerTurn == 2)
-                if (defenderCoords.getX() == PLAYER1_BACK_ROW ||
-                defenderCoords.getX() == PLAYER1_FRONT_ROW)
+                }
+            } else if (playerTurn == 2) {
+                if (defenderCoords.getX() == PLAYER1_BACK_ROW
+                        || defenderCoords.getX() == PLAYER1_FRONT_ROW) {
                     return "Attacked card does not belong to the enenmy";
+                }
+            }
         }
 
         if (playerTurn == 1) {
-            if (!field.existsTank(PLAYER2_FRONT_ROW) &&
-                    field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY()))
+            if (!field.existsTank(PLAYER2_FRONT_ROW)
+                   && field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
                 return "Attacked card is not of type 'Tank’.";
-        } else if (!field.existsTank(PLAYER1_FRONT_ROW) &&
-                field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY()))
+            }
+        } else if (!field.existsTank(PLAYER1_FRONT_ROW)
+                && field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
             return "Attacked card is not of type 'Tank’.";
+        }
 
-        if (attacker.useAbility(defender))
+        if (attacker.useAbility(defender)) {
             field.removeCard(defenderCoords.getX(), defenderCoords.getY());
+        }
         return null;
     }
 
-    public String attackHero (Coords attackerCoords) {
+    public String attackHero(final Coords attackerCoords) {
         Cards attacker = field.getCard(attackerCoords.getX(), attackerCoords.getY());
-        if (attacker == null)
+        if (attacker == null) {
             return "Card not found.";
+        }
 
-        if (attacker.isFrozen())
+        if (attacker.isFrozen()) {
             return "Attacker card is frozen.";
+        }
 
-        if (attacker.isUsed())
+        if (attacker.isUsed()) {
             return "Attacker card has already attacked this turn.";
+        }
 
         if (playerTurn == 1) {
-            if (!field.existsTank(PLAYER2_FRONT_ROW))
+            if (!field.existsTank(PLAYER2_FRONT_ROW)) {
                 return "Attacked card is not of type 'Tank’.";
-        } else if (!field.existsTank(PLAYER1_FRONT_ROW))
+            }
+        } else if (!field.existsTank(PLAYER1_FRONT_ROW)) {
             return "Attacked card is not of type 'Tank’.";
+        }
 
         if (playerTurn == 1) {
             player2.getHero().setHealth(
@@ -419,41 +432,48 @@ public class Match {
         return null;
     }
 
-    public String heroAbility (int row) {
+    public String heroAbility(final int row) {
         Cards currHero;
         Player currPlayer;
         if (playerTurn == 1) {
             currPlayer = player1;
-        } else
+        } else {
             currPlayer = player2;
+        }
 
         currHero = currPlayer.getHero();
 
-        if (currPlayer.getMana() < currHero.getMana())
+        if (currPlayer.getMana() < currHero.getMana()) {
             return "Not enough mana to use hero's ability.";
+        }
 
-        if (currHero.isUsed())
+        if (currHero.isUsed()) {
             return "Hero has already attacked this turn.";
+        }
 
-        if (currHero.getName().equals("Lord Royce") ||
-                currHero.getName().equals("Empress Thorina")) {
+        if (currHero.getName().equals("Lord Royce")
+               || currHero.getName().equals("Empress Thorina")) {
             if (playerTurn == 1) {
-                if (row == PLAYER1_BACK_ROW || row == PLAYER1_FRONT_ROW)
+                if (row == PLAYER1_BACK_ROW || row == PLAYER1_FRONT_ROW) {
                     return "Selected row does not belong to the enemy.";
+                }
             } else if (playerTurn == 2) {
-                if (row == PLAYER2_BACK_ROW || row == PLAYER2_FRONT_ROW)
+                if (row == PLAYER2_BACK_ROW || row == PLAYER2_FRONT_ROW) {
                     return "Selected row does not belong to the enemy.";
+                }
             }
         }
 
-        if (currHero.getName().equals("General Kocioraw") ||
-                currHero.getName().equals("King Mudface")) {
+        if (currHero.getName().equals("General Kocioraw")
+               || currHero.getName().equals("King Mudface")) {
             if (playerTurn == 1) {
-                if (row == PLAYER2_BACK_ROW || row == PLAYER2_FRONT_ROW)
+                if (row == PLAYER2_BACK_ROW || row == PLAYER2_FRONT_ROW) {
                     return "Selected row does not belong to the current player.";
+                }
             } else if (playerTurn == 2) {
-                if (row == PLAYER1_BACK_ROW || row == PLAYER1_FRONT_ROW)
+                if (row == PLAYER1_BACK_ROW || row == PLAYER1_FRONT_ROW) {
                     return "Selected row does not belong to the current player.";
+                }
             }
         }
 
