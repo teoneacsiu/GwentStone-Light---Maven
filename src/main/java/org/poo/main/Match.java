@@ -32,6 +32,10 @@ public final class Match {
         gameEnded = false;
     }
 
+    /**
+     * Perform the setup for the match.
+     * @param gameInput provides the required informations.
+     */
     public void startGame(final StartGameInput gameInput) {
         playerTurn = gameInput.getStartingPlayer();
         turnCounter = 1;
@@ -52,6 +56,10 @@ public final class Match {
         player2.setMana(1);
     }
 
+    /**
+     * After every player turn, this method updates the specified
+     * player params.
+     */
     public void startRound() {
         int manaGain = min(turnCounter / 2 + 1, MAX_MANA);
 
@@ -68,6 +76,9 @@ public final class Match {
         player2.getHero().setUsed(false);
     }
 
+    /**
+     * After every game, the game elements need to be reset
+     */
     public void resetMatch() {
         field.resetField();
         player1.resetPlayer();
@@ -76,6 +87,11 @@ public final class Match {
         gameEnded = false;
     }
 
+    /**
+     * Analyze and perform the task for every action provided.
+     * @param input provides the commands list
+     * @return the output in the asked form
+     */
     public ArrayNode playing(final ArrayList<ActionsInput> input) {
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode output = mapper.createArrayNode();
@@ -242,6 +258,12 @@ public final class Match {
         return output;
     }
 
+    /**
+     * This method handles the case of "placeCard" command
+     * with every edge cases.
+     * @param action provides the index of the card in player`s hand.
+     * @return the error if exists.
+     */
     public String placeCard(final ActionsInput action) {
         Cards card = new Cards();
         String notEnoughMana =
@@ -289,6 +311,13 @@ public final class Match {
         return null;
     }
 
+    /**
+     * This method handles the case of "cardUsesAttack" command
+     * with every edge cases.
+     * @param attackerCoords provides the coordinates of the attacker card.
+     * @param defenderCoords provides the coordinates of the attacked card.
+     * @return the error if exists.
+     */
     public String attackCard(final Coords attackerCoords, final Coords defenderCoords) {
         Cards attacker = field.getCard(attackerCoords.getX(), attackerCoords.getY());
         Cards defender = field.getCard(defenderCoords.getX(), defenderCoords.getY());
@@ -296,9 +325,6 @@ public final class Match {
         if (attacker == null || defender == null) {
             return "Card not found.";
         }
-
-        System.out.println("Attack: " + attacker.getName() + ": " + attackerCoords.getX() + ", " + attackerCoords.getY()
-                + " -> " + defender.getName() + ": " + defenderCoords.getX() + ", " + defenderCoords.getY());
 
         if (attacker.isUsed()) {
             return "Attacker card has already attacked this turn.";
@@ -334,6 +360,13 @@ public final class Match {
         return null;
     }
 
+    /**
+     * This method handles the case of "cardUsesAbility" command
+     * with every edge cases.
+     * @param attackerCoords provides the coordinates of the attacker card.
+     * @param defenderCoords provides the coordinates of the attacked card.
+     * @return the error if exists.
+     */
     public String cardUseAbility(final Coords attackerCoords, final Coords defenderCoords) {
         Cards attacker = field.getCard(attackerCoords.getX(), attackerCoords.getY());
         Cards defender = field.getCard(defenderCoords.getX(), defenderCoords.getY());
@@ -341,9 +374,6 @@ public final class Match {
         if (attacker == null || defender == null) {
             return "Card not found.";
         }
-
-        System.out.println("Ability: " + attacker.getName() + ": " + attackerCoords.getX() + ", " + attackerCoords.getY()
-        + " -> " + defender.getName() + ": " + defenderCoords.getX() + ", " + defenderCoords.getY());
 
         if (attacker.isFrozen()) {
             return "Attacker card is frozen.";
@@ -400,6 +430,12 @@ public final class Match {
         return null;
     }
 
+    /**
+     * This method handles the case of "useAttackHero" command
+     * with every edge cases.
+     *@param attackerCoords provides the coordinates of the attacker card.
+     * @return the error if exists
+     */
     public String attackHero(final Coords attackerCoords) {
         if (gameEnded) {
             return null;
@@ -450,6 +486,12 @@ public final class Match {
         return null;
     }
 
+    /**
+     * This method handles the case of "useHeroAbility" command
+     * with every edge cases.
+     * @param row the given affected row in the field.
+     * @return the error if exists.
+     */
     public String heroAbility(final int row) {
         Cards currHero;
         Player currPlayer;
@@ -460,7 +502,6 @@ public final class Match {
         }
 
         currHero = currPlayer.getHero();
-        System.out.println(currHero.getName() + " " + row);
 
         if (currPlayer.getMana() < currHero.getMana()) {
             return "Not enough mana to use hero's ability.";

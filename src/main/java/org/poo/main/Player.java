@@ -46,6 +46,10 @@ public final class Player {
         }
     }
 
+    /**
+     * Setting up the hero of the player.
+     * @param hero the input information of the hero.
+     */
     public void setHero(final CardInput hero) {
         switch (hero.getName()) {
             case "Empress Thorina":
@@ -66,33 +70,57 @@ public final class Player {
         }
     }
 
+    /**
+     * Resetting the player before a new match.
+     */
     public void resetPlayer() {
-        deck = null;
         hand = new Deck();
         hero = null;
 
         mana = 0;
     }
 
+    /**
+     * Copying the deck from the original one to protect the information.
+     * @param seed the shuffle seed for the randomization.
+     */
     public void shuffle(final int seed) {
         deck = originalDeck;
         deck.shuffle(seed);
     }
 
+    /**
+     * Choosing the deck to play with.
+     * @param deckIdx the index of the specified deck.
+     */
     public void chooseDeck(final int deckIdx) {
         originalDeck = availableDecks.get(deckIdx);
     }
 
+    /**
+     * Draw a card from the deck before every round.
+     */
     public void drawCard() {
         if (hand != null) {
             hand.addCard((deck.dealCard(0)));
         }
     }
 
+    /**
+     * Checks if a card exists in hand.
+     * @param index the index of the card.
+     * @return if the card exists or not.
+     */
     public boolean cardExists(final int index) {
         return hand.cardExistsDeck(index);
     }
 
+    /**
+     * Getting a card from the hand and decrementing the player mana,
+     * used to place the card on the field.
+     * @param index the index of the card.
+     * @return the card information.
+     */
     public Cards getCard(final int index) {
         if (index < 0 || index >= hand.getNumOfCards()) {
             System.out.println("Invalid index for hand: " + index);
@@ -111,10 +139,16 @@ public final class Player {
         return null;
     }
 
+    /**
+     * Increments the wins of the player.
+     */
     public void win() {
         wins++;
     }
 
+    /**
+     * Increments the losses of the player.
+     */
     public void lose() {
         losses++;
     }

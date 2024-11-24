@@ -2,6 +2,9 @@ package org.poo.playingcards;
 
 import java.util.ArrayList;
 
+/**
+ * Provides a specific minion that has a special ability.
+ */
 public final class Disciple extends Cards {
     public Disciple() {
         super();
@@ -14,6 +17,9 @@ public final class Disciple extends Cards {
     }
 
     @Override
+    /**
+     * Performing the specific ability of the minion Disciple.
+     */
     public void useAbility(final Cards card) {
         card.setHealth(card.getHealth() + 2);
         setUsed(true);

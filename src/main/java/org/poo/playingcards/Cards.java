@@ -11,6 +11,9 @@ import java.util.ArrayList;
 
 @Setter
 @Getter
+/**
+ * Class Cards provides functionality for a generic card.
+ */
 public class Cards {
     public static final int HERO_HEALTH = 30;
     private static final ArrayList<String> FRONT_ROW_MINIONS = new ArrayList<>();
@@ -61,6 +64,10 @@ public class Cards {
         frozen = false;
     }
 
+     /**
+      *  Method getCardRow.
+      * @return returns the row that the card needs to be placed.
+      */
     public int getCardRow() {
         int row = 0;
         if (FRONT_ROW_MINIONS.contains(name)) {
@@ -72,11 +79,19 @@ public class Cards {
         return row;
     }
 
+    /**
+     *
+     * @return if the minion is dead
+     */
     public boolean isDead() {
         return health == 0;
     }
 
-    public void attack(Cards defender) {
+    /**
+     * Modify the health of the attacked card after is attacked.
+     * @param defender the card that is attacked.
+     */
+    public void attack(final Cards defender) {
         used = true;
         if (defender.getHealth() < attackDamage) {
             defender.setHealth(0);
@@ -85,14 +100,28 @@ public class Cards {
         }
     }
 
+    /**
+     * Performs the ability of the minion.
+     * @param card provides the card that is affected.
+     */
     public void useAbility(final Cards card) {
-        System.out.println("E prost");
+
     }
 
+    /**
+     * Performs the ability of the card.
+     * @param field the whole field of the game.
+     * @param row the row that is affected by the ability.
+     * @return the col of the card that needs to be removed.
+     */
     public int useAbility(final Field field, final int row) {
         return -1;
     }
 
+    /**
+     * Add to output the card
+     * @return the card information in output form.
+     */
     public ObjectNode printCard() {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode cardNode = mapper.createObjectNode();
@@ -115,6 +144,10 @@ public class Cards {
         return cardNode;
     }
 
+    /**
+     * Add to output the hero specific to the player.
+     * @return the hero information in output form.
+     */
     public ObjectNode printHero() {
         ObjectMapper mapper = new ObjectMapper();
 

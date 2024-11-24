@@ -16,6 +16,10 @@ public final class Coords {
         this.y = y;
     }
 
+    /**
+     * This is the method to put in the output form the coordinates.
+     * @return the output form.
+     */
     public ObjectNode toJson() {
         ObjectMapper mapper = new ObjectMapper();
 

@@ -1,0 +1,10 @@
+0000000000000000000000000000000000000000 444fa4a08b7ceb8553721218564cd192e1ea179e teoneacsiu <teobest2004@gmail.com> 1731947905 +0200	commit (initial): Initial commit
+444fa4a08b7ceb8553721218564cd192e1ea179e a3d2e97118dc05ae90f1e7454261647acd0b603b teoneacsiu <teobest2004@gmail.com> 1731948490 +0200	commit: changed to maven
+a3d2e97118dc05ae90f1e7454261647acd0b603b 529f9162d387d14dfd28a6935e6deb108adbd4f0 teoneacsiu <teobest2004@gmail.com> 1731948903 +0200	commit: fixed warnings
+529f9162d387d14dfd28a6935e6deb108adbd4f0 7e20669ccee49b8943b410a4e60646843718bd4b teoneacsiu <teobest2004@gmail.com> 1731962547 +0200	commit: still testing
+7e20669ccee49b8943b410a4e60646843718bd4b b5f00daa815c2ce7c90e036a21d70ff8af6e1e81 teoneacsiu <teobest2004@gmail.com> 1731968122 +0200	commit: .
+b5f00daa815c2ce7c90e036a21d70ff8af6e1e81 5278ce8297b6a8f37ec79268b86518c09653d4a4 teoneacsiu <teobest2004@gmail.com> 1731968542 +0200	commit: mana resolved
+5278ce8297b6a8f37ec79268b86518c09653d4a4 cf92cf82bc3cfe2fea13dbfda21ce6b0402fea2a teoneacsiu <teobest2004@gmail.com> 1731970298 +0200	commit: some checkstyle
+cf92cf82bc3cfe2fea13dbfda21ce6b0402fea2a 4ce9121af6ad870db14bcf7640e5bdc7be881b74 teoneacsiu <teobest2004@gmail.com> 1731974742 +0200	commit: .
+4ce9121af6ad870db14bcf7640e5bdc7be881b74 3385c975a6bfb0736da0bee969498fa402415dd2 teoneacsiu <teobest2004@gmail.com> 1731976250 +0200	commit: .
+3385c975a6bfb0736da0bee969498fa402415dd2 c1043b478295863eaa8a7ea487ce7185256d71fa teoneacsiu <teobest2004@gmail.com> 1732461051 +0200	commit: 2 tests remaining

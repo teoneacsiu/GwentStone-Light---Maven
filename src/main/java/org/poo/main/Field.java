@@ -26,6 +26,11 @@ public final class Field {
         }
     }
 
+    /**
+     * Adding a card to the field.
+     * @param card the card to be added.
+     * @param row the row of the card.
+     */
     public void addCard(final Cards card, final int row) {
         if (isRowFull(row)) {
             return;
@@ -39,10 +44,21 @@ public final class Field {
         }
     }
 
+    /**
+     * Getting the card information from the field.
+     * @param row coordinate of the wanted card.
+     * @param col coordinate of the wanted card.
+     * @return the information of the card.
+     */
     public Cards getCard(final int row, final int col) {
         return field[row][col];
     }
 
+    /**
+     * Verify if a tank is present on the field.
+     * @param row the specific row for the search.
+     * @return if a tank exists or not.
+     */
     public boolean existsTank(final int row) {
         boolean exists = false;
         for (int i = 0; i < TABLE_COLS; i++) {
@@ -55,6 +71,11 @@ public final class Field {
         return exists;
     }
 
+    /**
+     * Verify is a row is full.
+     * @param row specific row for search.
+     * @return if row is full or not.
+     */
     public boolean isRowFull(final int row) {
         for (int i = 0; i < TABLE_COLS; i++) {
             if (field[row][i] == null) {
@@ -64,23 +85,40 @@ public final class Field {
         return true;
     }
 
+    /**
+     * Verify is the attacked card is the type tank.
+     * @param row the row to be searched.
+     * @param col the col to be searched.
+     * @return if the attacked card is tank or not.
+     */
     public boolean attackedCardIsTank(final int row, final int col) {
         return TANKS.contains(getCard(row, col).getName());
     }
 
-    public void removeCard(final int defenseX, int defenseY) {
+    /**
+     * Remove a card from the field and shifts to left the remaining cards.
+     * @param defenseX the row of the specific card.
+     * @param defenseY the col of the specific card.
+     */
+    public void removeCard(final int defenseX, final int defenseY) {
         field[defenseX][defenseY] = null;
+        int y = defenseY;
 
-        while (defenseY + 1 < TABLE_COLS) {
-            if (field[defenseX][defenseY + 1] != null) {
-                field[defenseX][defenseY] = field[defenseX][defenseY + 1];
+        while (y + 1 < TABLE_COLS) {
+            if (field[defenseX][y + 1] != null) {
+                field[defenseX][y] = field[defenseX][y + 1];
             } else {
-                field[defenseX][defenseY] = null;
+                field[defenseX][y] = null;
             }
-            defenseY++;
+            y++;
         }
     }
 
+    /**
+     * Unfreeze all cards of one player
+     * @param backRow the specific row of the player.
+     * @param frontRow the specific row of the player.
+     */
     public void unfreeze(final int backRow, final int frontRow) {
         for (int i = 0; i < TABLE_COLS; i++) {
             if (field[backRow][i] != null) {
@@ -93,6 +131,9 @@ public final class Field {
         }
     }
 
+    /**
+     * Reset the attacked of every card on field.
+     */
     public void resetAttack() {
         for (int i = 0; i < TABLE_ROWS; i++) {
             for (int j = 0; j < TABLE_COLS; j++) {
@@ -103,6 +144,9 @@ public final class Field {
         }
     }
 
+    /**
+     * Empties the field before a match.
+     */
     public void resetField() {
         for (int i = 0; i < TABLE_ROWS; i++) {
             for (int j = 0; j < TABLE_COLS; j++) {
@@ -111,6 +155,10 @@ public final class Field {
         }
     }
 
+    /**
+     * Putting in required form the output.
+     * @return the output form.
+     */
     public ArrayNode printAll() {
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode output = mapper.createArrayNode();
@@ -120,18 +168,19 @@ public final class Field {
             ArrayNode row = mapper.createArrayNode();
             for (int j = 0; j < TABLE_COLS; j++) {
                 if (field[i][j] != null) {
-                    System.out.println(i + " " + j + " " + field[i][j].getName()
-                    + ": " +field[i][j].getHealth() + ", " + field[i][j].getAttackDamage());
                     row.add(field[i][j].printCard());
                 }
             }
             output.add(row);
         }
-        System.out.println();
 
         return output;
     }
 
+    /**
+     * Print the frozen cards present on field at that moment.
+     * @return the output form.
+     */
     public ArrayNode printAllFrozen() {
         // Creates the output
         ObjectMapper mapper = new ObjectMapper();
