@@ -85,12 +85,12 @@ public class Cards {
         }
     }
 
-    public boolean useAbility(final Cards card) {
-        return false;
+    public void useAbility(final Cards card) {
+        System.out.println("E prost");
     }
 
-    public boolean useAbility(final Field field, final int row) {
-        return false;
+    public int useAbility(final Field field, final int row) {
+        return -1;
     }
 
     public ObjectNode printCard() {

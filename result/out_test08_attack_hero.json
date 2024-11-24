@@ -1,8 +1,4 @@
 [ {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
   "command" : "getCardsInHand",
   "playerIdx" : 2,
   "output" : [ {
@@ -72,16 +68,6 @@
     "health" : 30
   }
 }, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
   "command" : "getCardsInHand",
   "playerIdx" : 2,
   "output" : [ {
@@ -138,7 +124,7 @@
     "description" : "Standard card: Absolute order, a soldier must devote his life to his General.",
     "colors" : [ "Green", "Yellow" ],
     "name" : "General Kocioraw",
-    "health" : 30
+    "health" : 25
   }
 }, {
   "command" : "getPlayerHero",
@@ -148,34 +134,10 @@
     "description" : "Premium card: Her majesty rule is absolute, every non-believer will suffer.",
     "colors" : [ "Black", "Red" ],
     "name" : "Empress Thorina",
-    "health" : 30
+    "health" : 25
   }
 }, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
-}, {
-  "error" : "Card not found"
+  "gameEnded" : "Player two killed the enemy hero."
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 2,

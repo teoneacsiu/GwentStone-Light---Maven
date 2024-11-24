@@ -14,9 +14,8 @@ public final class Disciple extends Cards {
     }
 
     @Override
-    public boolean useAbility(final Cards card) {
-        card.setHealth(card.getHealth());
-        super.setUsed(true);
-        return false;
+    public void useAbility(final Cards card) {
+        card.setHealth(card.getHealth() + 2);
+        setUsed(true);
     }
 }

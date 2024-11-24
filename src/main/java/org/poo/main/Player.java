@@ -15,21 +15,14 @@ import java.util.ArrayList;
 
 @Getter @Setter
 public final class Player {
-    @Setter
-    @Getter
     private int mana;
-    @Getter
     private Deck deck;
     private ArrayList<CardInput> inputDeck;
     private final ArrayList<Deck> availableDecks;
-    @Getter
     private Cards hero;
     private Deck originalDeck;
-    @Getter
     private Deck hand;
-    @Getter
     private int wins;
-    @Getter
     private int losses;
 
     public Player(final DecksInput decksInput) {
@@ -63,16 +56,13 @@ public final class Player {
                 this.hero = new GeneralKocioraw(hero.getMana(), hero.getDescription(),
                         hero.getColors(), hero.getName());
                 break;
-            case "Kind Mudface":
+            case "King Mudface":
                 this.hero = new KingMudface(hero.getMana(), hero.getDescription(),
                         hero.getColors(), hero.getName());
                 break;
-            case "Lord Royce":
+            default:
                 this.hero = new LordRoyce(hero.getMana(), hero.getDescription(),
                         hero.getColors(), hero.getName());
-                break;
-            default:
-                this.hero = new Cards();
         }
     }
 
@@ -100,7 +90,7 @@ public final class Player {
     }
 
     public boolean cardExists(final int index) {
-        return hand.cardExists(index);
+        return hand.cardExistsDeck(index);
     }
 
     public Cards getCard(final int index) {
@@ -109,13 +99,13 @@ public final class Player {
             return null;
         }
 
-        Cards card = hand.dealCard(index);
+        Cards card = hand.getCard(index);
 
 
         if (card != null) {
             if (mana >= card.getMana()) {
                 mana -= card.getMana();
-                return card;
+                return hand.dealCard(index);
             }
         }
         return null;

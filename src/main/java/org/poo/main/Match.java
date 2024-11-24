@@ -23,11 +23,13 @@ public final class Match {
     private final Field field;
     private int playerTurn;
     private int turnCounter;
+    private boolean gameEnded;
 
     public Match(final Input input) {
         field = new Field();
         player1 = new Player(input.getPlayerOneDecks());
         player2 = new Player(input.getPlayerTwoDecks());
+        gameEnded = false;
     }
 
     public void startGame(final StartGameInput gameInput) {
@@ -51,15 +53,17 @@ public final class Match {
     }
 
     public void startRound() {
-        player1.setMana(
-                player1.getMana() + min(turnCounter / 2 + 1, MAX_MANA)
-        );
-        player2.setMana(
-                player2.getMana() + min(turnCounter / 2 + 1, MAX_MANA)
-        );
+        int manaGain = min(turnCounter / 2 + 1, MAX_MANA);
+
+        if (turnCounter % 2 == 1) {
+            player1.setMana(player1.getMana() + manaGain);
+            player2.setMana(player2.getMana() + manaGain);
+        }
+
         player1.drawCard();
         player2.drawCard();
         field.resetAttack();
+
         player1.getHero().setUsed(false);
         player2.getHero().setUsed(false);
     }
@@ -69,6 +73,7 @@ public final class Match {
         player1.resetPlayer();
         player2.resetPlayer();
         turnCounter = 1;
+        gameEnded = false;
     }
 
     public ArrayNode playing(final ArrayList<ActionsInput> input) {
@@ -82,8 +87,6 @@ public final class Match {
                 case "placeCard":
                     res = placeCard(action);
                     if (res == null) {
-                        //actionNode.put("Player1Mana", player1.getMana());
-                        //actionNode.put("Player2Mana", player2.getMana());
                         break;
                     }
                     actionNode.put("command", action.getCommand());
@@ -109,7 +112,7 @@ public final class Match {
                             action.getCardAttacker().getY());
                     Coords defenderCooords = new Coords(action.getCardAttacked().getX(),
                             action.getCardAttacked().getY());
-                    res = useAbility(attackerCooords, defenderCooords);
+                    res = cardUseAbility(attackerCooords, defenderCooords);
                     if (res == null) {
                         break;
                     }
@@ -119,20 +122,17 @@ public final class Match {
                     actionNode.put("error", res);
                     break;
                 case "useAttackHero":
-                    if (action.getCardAttacked() == null) {
-                        actionNode.put("error", "Card not found");
-                        break;
-                    }
-                    Coords attackerCoooords = new Coords(action.getCardAttacked().getX(),
-                            action.getCardAttacked().getY());
+                    Coords attackerCoooords = new Coords(action.getCardAttacker().getX(),
+                            action.getCardAttacker().getY());
                     res = attackHero(attackerCoooords);
                     if (res == null) {
                         break;
                     }
                     if (res.equals("Player one killed the enemy hero.")
                            || res.equals("Player two killed the enemy hero.")) {
-                        System.out.println("Enemy hero killed");
                         actionNode.put("gameEnded", res);
+                        gameEnded = true;
+                            break;
                     }
                     actionNode.put("command", action.getCommand());
                     actionNode.set("cardAttacker", attackerCoooords.toJson());
@@ -168,9 +168,9 @@ public final class Match {
                     actionNode.put("command", action.getCommand());
                     actionNode.put("output", player2.getWins());
                     break;
-                case "totalGamesPlayed":
+                case "getTotalGamesPlayed":
                     actionNode.put("command", action.getCommand());
-                    actionNode.put("output", player1.getWins() + player1.getLosses());
+                    actionNode.put("output", player1.getWins() + player2.getWins());
                     break;
                 case "getPlayerDeck":
                     actionNode.put("command", action.getCommand());
@@ -231,8 +231,6 @@ public final class Match {
                     actionNode.put("command", action.getCommand());
                     actionNode.set("output", field.printAllFrozen());
                     break;
-                case "breakpoint":
-                    break;
                 default:
                     System.out.println("Error: Command not recognised.");
                     System.out.println("Command: " + action.getCommand());
@@ -268,22 +266,20 @@ public final class Match {
         if (card == null) {
             return notEnoughMana;
         }
-        System.out.println("PlacedCard Name -> " + card.getName()
-                + " for player:" + playerTurn);
 
         int row = card.getCardRow();
         switch (row) {
             case 1:
-                if (playerTurn == 1) {
+                if (playerTurn == 1 && !field.isRowFull(PLAYER1_FRONT_ROW)) {
                     field.addCard(card, PLAYER1_FRONT_ROW);
-                } else {
+                } else if (playerTurn == 2 && !field.isRowFull(PLAYER2_FRONT_ROW)) {
                     field.addCard(card, PLAYER2_FRONT_ROW);
                 }
                 break;
             case 2:
-                if (playerTurn == 1) {
+                if (playerTurn == 1 && !field.isRowFull(PLAYER1_BACK_ROW)) {
                     field.addCard(card, PLAYER1_BACK_ROW);
-                } else {
+                } else if (!field.isRowFull(PLAYER2_BACK_ROW)) {
                     field.addCard(card, PLAYER2_BACK_ROW);
                 }
                 break;
@@ -301,6 +297,9 @@ public final class Match {
             return "Card not found.";
         }
 
+        System.out.println("Attack: " + attacker.getName() + ": " + attackerCoords.getX() + ", " + attackerCoords.getY()
+                + " -> " + defender.getName() + ": " + defenderCoords.getX() + ", " + defenderCoords.getY());
+
         if (attacker.isUsed()) {
             return "Attacker card has already attacked this turn.";
         }
@@ -309,21 +308,22 @@ public final class Match {
         }
 
         if (playerTurn == 1) {
-            if (defenderCoords.getX() != PLAYER2_FRONT_ROW
-                   && defenderCoords.getX() != PLAYER2_BACK_ROW) {
+            if (defenderCoords.getX() == PLAYER1_BACK_ROW
+                    || defenderCoords.getX() == PLAYER1_FRONT_ROW) {
                 return "Attacked card does not belong to the enemy.";
             }
-
-            if (!field.existsTank(PLAYER2_FRONT_ROW)
-                    && field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
-                return "Attacked card is not of type 'Tank’.";
+        } else if (playerTurn == 2) {
+            if (defenderCoords.getX() == PLAYER2_BACK_ROW
+                    || defenderCoords.getX() == PLAYER2_FRONT_ROW) {
+                return "Attacked card does not belong to the enemy.";
             }
-        } else if (defenderCoords.getX() != PLAYER1_BACK_ROW
-                && defenderCoords.getX() != PLAYER1_FRONT_ROW) {
-            return "Attacked card does not belong to the enemy.";
-        } else if (!field.existsTank(PLAYER1_FRONT_ROW)
-                && field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
-            return "Attacked card is not of type 'Tank’.";
+        }
+
+        int opponentFrontRow = (playerTurn == 1) ? PLAYER2_FRONT_ROW : PLAYER1_FRONT_ROW;
+        if (field.existsTank(opponentFrontRow)) {
+            if (!field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
+                return "Attacked card is not of type 'Tank'.";
+            }
         }
 
         attacker.attack(defender);
@@ -334,13 +334,16 @@ public final class Match {
         return null;
     }
 
-    public String useAbility(final Coords attackerCoords, final Coords defenderCoords) {
+    public String cardUseAbility(final Coords attackerCoords, final Coords defenderCoords) {
         Cards attacker = field.getCard(attackerCoords.getX(), attackerCoords.getY());
         Cards defender = field.getCard(defenderCoords.getX(), defenderCoords.getY());
 
         if (attacker == null || defender == null) {
             return "Card not found.";
         }
+
+        System.out.println("Ability: " + attacker.getName() + ": " + attackerCoords.getX() + ", " + attackerCoords.getY()
+        + " -> " + defender.getName() + ": " + defenderCoords.getX() + ", " + defenderCoords.getY());
 
         if (attacker.isFrozen()) {
             return "Attacker card is frozen.";
@@ -354,12 +357,12 @@ public final class Match {
             if (playerTurn == 1) {
                 if (defenderCoords.getX() == PLAYER2_BACK_ROW
                         || defenderCoords.getX() == PLAYER2_FRONT_ROW) {
-                    return "Attacked card does not belong to the current player";
+                    return "Attacked card does not belong to the current player.";
                 }
             } else if (playerTurn == 2) {
                 if (defenderCoords.getX() == PLAYER1_BACK_ROW
                         || defenderCoords.getX() == PLAYER1_FRONT_ROW) {
-                    return "Attacked card does not belong to the current player";
+                    return "Attacked card does not belong to the current player.";
                 }
             }
         }
@@ -368,35 +371,40 @@ public final class Match {
             || attacker.getName().equals("Miraj")
             || attacker.getName().equals("The Cursed One")) {
             if (playerTurn == 1) {
-                if (defenderCoords.getX() == PLAYER2_BACK_ROW
-                    || defenderCoords.getX() == PLAYER2_FRONT_ROW) {
-                    return "Attacked card does not belong to the enenmy";
+                if (defenderCoords.getX() == PLAYER1_BACK_ROW
+                    || defenderCoords.getX() == PLAYER1_FRONT_ROW) {
+                    return "Attacked card does not belong to the enemy.";
+                }
+
+                if (field.existsTank(PLAYER2_FRONT_ROW)
+                   && !field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
+                    return "Attacked card is not of type 'Tank'.";
                 }
             } else if (playerTurn == 2) {
-                if (defenderCoords.getX() == PLAYER1_BACK_ROW
-                        || defenderCoords.getX() == PLAYER1_FRONT_ROW) {
-                    return "Attacked card does not belong to the enenmy";
+                if (defenderCoords.getX() == PLAYER2_BACK_ROW
+                        || defenderCoords.getX() == PLAYER2_FRONT_ROW) {
+                    return "Attacked card does not belong to the enemy.";
+                }
+
+                if (field.existsTank(PLAYER1_FRONT_ROW)
+                   && !field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
+                    return "Attacked card is not of type 'Tank'.";
                 }
             }
         }
 
-        if (playerTurn == 1) {
-            if (!field.existsTank(PLAYER2_FRONT_ROW)
-                   && field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
-                return "Attacked card is not of type 'Tank’.";
-            }
-        } else if (!field.existsTank(PLAYER1_FRONT_ROW)
-                && field.attackedCardIsTank(defenderCoords.getX(), defenderCoords.getY())) {
-            return "Attacked card is not of type 'Tank’.";
-        }
-
-        if (attacker.useAbility(defender)) {
+        attacker.useAbility(defender);
+        if (defender.getHealth() == 0) {
             field.removeCard(defenderCoords.getX(), defenderCoords.getY());
         }
         return null;
     }
 
     public String attackHero(final Coords attackerCoords) {
+        if (gameEnded) {
+            return null;
+        }
+
         Cards attacker = field.getCard(attackerCoords.getX(), attackerCoords.getY());
         if (attacker == null) {
             return "Card not found.";
@@ -411,17 +419,18 @@ public final class Match {
         }
 
         if (playerTurn == 1) {
-            if (!field.existsTank(PLAYER2_FRONT_ROW)) {
-                return "Attacked card is not of type 'Tank’.";
+            if (field.existsTank(PLAYER2_FRONT_ROW)) {
+                return "Attacked card is not of type 'Tank'.";
             }
-        } else if (!field.existsTank(PLAYER1_FRONT_ROW)) {
-            return "Attacked card is not of type 'Tank’.";
+        } else if (field.existsTank(PLAYER1_FRONT_ROW)) {
+            return "Attacked card is not of type 'Tank'.";
         }
 
         if (playerTurn == 1) {
             player2.getHero().setHealth(
                     player2.getHero().getHealth() - attacker.getAttackDamage()
             );
+            attacker.setUsed(true);
             if (player2.getHero().getHealth() <= 0) {
                 player1.win();
                 player2.lose();
@@ -431,6 +440,7 @@ public final class Match {
             player1.getHero().setHealth(
                     player1.getHero().getHealth() - attacker.getAttackDamage()
             );
+            attacker.setUsed(true);
             if (player1.getHero().getHealth() <= 0) {
                 player2.win();
                 player1.lose();
@@ -450,6 +460,7 @@ public final class Match {
         }
 
         currHero = currPlayer.getHero();
+        System.out.println(currHero.getName() + " " + row);
 
         if (currPlayer.getMana() < currHero.getMana()) {
             return "Not enough mana to use hero's ability.";
@@ -486,7 +497,10 @@ public final class Match {
         }
 
         currPlayer.setMana(currPlayer.getMana() - currHero.getMana());
-        currHero.useAbility(field, row);
+        int y = currHero.useAbility(field, row);
+        if (y != -1) {
+            field.removeCard(row, y);
+        }
         return null;
     }
 }

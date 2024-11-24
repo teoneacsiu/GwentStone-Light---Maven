@@ -14,17 +14,15 @@ public final class TheCursedOne extends Cards {
     }
 
     @Override
-    public boolean useAbility(final Cards card) {
+    public void useAbility(final Cards card) {
         if (card.getAttackDamage() == 0) {
-            setHealth(0);
-            return true;
+            card.setHealth(0);
+            return;
         }
 
         int aux = card.getHealth();
-        card.setHealth(super.getHealth());
-        super.setHealth(aux);
-        card.setAttackDamage(0);
-        super.setUsed(true);
-        return false;
+        card.setHealth(card.getAttackDamage());
+        card.setAttackDamage(aux);
+        setUsed(true);
     }
 }

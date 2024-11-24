@@ -63,6 +63,7 @@ public final class Main {
      */
     public static void action(final String filePath1,
                               final String filePath2) throws IOException {
+        System.out.println(filePath1);
         ObjectMapper objectMapper = new ObjectMapper();
 
         Input inputData = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH + filePath1),
@@ -73,12 +74,14 @@ public final class Main {
         Match match = new Match(inputData);
 
         for (int i = 0; i < inputData.getGames().size(); i++) {
+            System.out.println("Match Start...................................................................");
             match.resetMatch();
             match.startGame(inputData.getGames().get(i).getStartGame());
             output.addAll(match.playing(inputData.getGames().get(i).getActions()));
             ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
             objectWriter.writeValue(new File(filePath2), output);
         }
-        System.out.println("\n");
+
+        System.out.println();
     }
 }

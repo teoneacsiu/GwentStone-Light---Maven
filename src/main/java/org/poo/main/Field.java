@@ -27,6 +27,10 @@ public final class Field {
     }
 
     public void addCard(final Cards card, final int row) {
+        if (isRowFull(row)) {
+            return;
+        }
+
         for (int i = 0; i < TABLE_COLS; i++) {
             if (field[row][i] == null) {
                 field[row][i] = card;
@@ -51,12 +55,30 @@ public final class Field {
         return exists;
     }
 
+    public boolean isRowFull(final int row) {
+        for (int i = 0; i < TABLE_COLS; i++) {
+            if (field[row][i] == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean attackedCardIsTank(final int row, final int col) {
         return TANKS.contains(getCard(row, col).getName());
     }
 
-    public void removeCard(final int defenseX, final int defenseY) {
+    public void removeCard(final int defenseX, int defenseY) {
         field[defenseX][defenseY] = null;
+
+        while (defenseY + 1 < TABLE_COLS) {
+            if (field[defenseX][defenseY + 1] != null) {
+                field[defenseX][defenseY] = field[defenseX][defenseY + 1];
+            } else {
+                field[defenseX][defenseY] = null;
+            }
+            defenseY++;
+        }
     }
 
     public void unfreeze(final int backRow, final int frontRow) {
@@ -98,11 +120,14 @@ public final class Field {
             ArrayNode row = mapper.createArrayNode();
             for (int j = 0; j < TABLE_COLS; j++) {
                 if (field[i][j] != null) {
+                    System.out.println(i + " " + j + " " + field[i][j].getName()
+                    + ": " +field[i][j].getHealth() + ", " + field[i][j].getAttackDamage());
                     row.add(field[i][j].printCard());
                 }
             }
             output.add(row);
         }
+        System.out.println();
 
         return output;
     }

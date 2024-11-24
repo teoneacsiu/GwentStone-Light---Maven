@@ -14,13 +14,12 @@ public final class TheRipper extends Cards {
     }
 
     @Override
-    public boolean useAbility(final Cards card) {
+    public void useAbility(final Cards card) {
         if (card.getAttackDamage() < 2) {
             card.setAttackDamage(0);
         } else {
             card.setAttackDamage(card.getAttackDamage() - 2);
         }
-        super.setUsed(true);
-        return false;
+        setUsed(true);
     }
 }

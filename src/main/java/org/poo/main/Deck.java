@@ -27,6 +27,7 @@ public final class Deck {
     }
 
     public void addCard(final Cards card) {
+        //System.out.println("Adding card " + card.getName());
         cards.add(card);
         numOfCards++;
     }
@@ -58,12 +59,16 @@ public final class Deck {
         Collections.shuffle(cards, rand);
     }
 
-    public boolean cardExists(final int index) {
+    public boolean cardExistsDeck(final int index) {
         if (cards.size() <= index) {
             return false;
         }
 
         return cards.get(index) != null;
+    }
+
+    public Cards getCard(final int index) {
+        return cards.get(index);
     }
 
     public Cards dealCard(final int index) {
@@ -72,6 +77,7 @@ public final class Deck {
         }
 
         numOfCards--;
+        //System.out.println(cards.get(index).getName());
         return cards.remove(index);
     }
 

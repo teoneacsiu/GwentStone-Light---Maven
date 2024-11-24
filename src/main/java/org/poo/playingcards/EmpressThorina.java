@@ -16,23 +16,22 @@ public final class EmpressThorina extends Cards {
     }
 
     @Override
-    public boolean useAbility(final Field field, final int row) {
-        int max = 0;
-        int removeX = 0;
+    public int useAbility(final Field field, final int row) {
+        int max = -1;
+        int removeY = -1;
         for (int i = Field.TABLE_COLS - 1; i >= 0; i--) {
             if (field.getCard(row, i) != null) {
                 if (field.getCard(row, i).getHealth() > max) {
                     max = field.getCard(row, i).getHealth();
-                    removeX = i;
+                    removeY = i;
                 }
             }
         }
-        if (max != 0) {
-            field.removeCard(removeX, row);
+        if (max != -1) {
             super.setUsed(true);
-            return true;
+            return removeY;
         }
         super.setUsed(true);
-        return false;
+        return -1;
     }
 }

@@ -16,7 +16,7 @@ public final class GeneralKocioraw extends Cards {
     }
 
     @Override
-    public boolean useAbility(final Field field, final int row) {
+    public int useAbility(final Field field, final int row) {
         for (int i = 0; i < Field.TABLE_COLS; i++) {
             if (field.getCard(row, i) != null) {
                 field.getCard(row, i).setAttackDamage(
@@ -25,6 +25,6 @@ public final class GeneralKocioraw extends Cards {
             }
         }
         super.setUsed(true);
-        return true;
+        return -1;
     }
 }

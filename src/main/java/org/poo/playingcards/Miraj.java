@@ -14,11 +14,10 @@ public final class Miraj extends Cards {
     }
 
     @Override
-    public boolean useAbility(final Cards card) {
+    public void useAbility(final Cards card) {
         int aux = card.getHealth();
-        card.setHealth(super.getHealth());
-        super.setHealth(aux);
-        super.setUsed(true);
-        return false;
+        card.setHealth(this.getHealth());
+        this.setHealth(aux);
+        this.setUsed(true);
     }
 }
